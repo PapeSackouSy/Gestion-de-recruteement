@@ -13,7 +13,9 @@
                   <img src="{{asset('Auth/assets/img/logo uabd.jpg')}}" width="180"  alt="">
                 </a>
                 <p class="text-center text-primary mb-9"></p>
-                <form>
+                <form method="post" action="{{route('registerApp')}}">
+                    @csrf
+                    @method('post')
                   <div class="mb-2">
                     <label for="exampleInputtext1" class="form-label">Nom</label>
                     <input type="text"  name="nom" class="form-control" id="exampleInputtext1" aria-describedby="textHelp">
@@ -46,7 +48,10 @@
                           <option value="Candidat">Candidat</option>
                     </select>
                   </div>
-                  <a href="./index.html" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Inscription</a>
+                  <div class="mb-2">
+                    <button  type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Inscription</a>
+                  </div>
+
                   <div class="d-flex align-items-center justify-content-center">
                     <p class="fs-4 mb-0 fw-bold">Vous Avez deja un compte?</p>
                     <a class="text-primary fw-bold ms-2" href="{{route('login')}}">Se connecte</a>
