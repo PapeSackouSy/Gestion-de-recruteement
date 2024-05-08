@@ -15,5 +15,8 @@ class AuthenficationControlleur extends Controller
     {
         return view('Register');
     }
-
+    public function dashboard()
+    {
+        return view('Dashboard.Dashboard');
+    }
 }

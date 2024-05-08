@@ -10,3 +10,4 @@ Route::get('/login',[AuthenficationControlleur::class,'LoginAfficher'])->name('l
 Route::get('/register',[AuthenficationControlleur::class,'RegisterAfficher'])->name('register');
 Route::post('register',[ProjetConntrolleur::class,'Recuper'])->name('registerApp');
 Route::post('/login',[ProjetConntrolleur::class,'authenticate'])->name('authentifier');
+Route::get('/dashboard',[AuthenficationControlleur::class,'dashboard'])->name('dash');
