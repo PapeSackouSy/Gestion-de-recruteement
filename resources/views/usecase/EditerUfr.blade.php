@@ -18,31 +18,25 @@
                     {{session('success')}}
                 </div>
                 @endif
-          <form method="POST" action="{{route('ajouterufr')}}">
+          <form method="POST" action="{{route('updateUfr',$tab->id)}}">
             @csrf
+            @method('put')
             <div>
          <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Nom de l'UFR:</label>
-            <input  type="text" class="form-control" id="nom" name="nom" value="{{ old('nom') }}" aria-describedby="emailHelp">
+            <input  type="text" class="form-control" id="nom" name="nom" value="{{$tab->nom }}" aria-describedby="emailHelp">
           </div>
-        @error('nom')
-            <span>{{ $message }}</span>
-        @enderror
     </div>
     <div class="mb-3">
         <label for="responsable_ufr_id" >Responsable UFR:</label>
            <select id="responsable_ufr_id" name="responsable_ufr_id">
-                <option value="">-- Sélectionnez un responsable --</option>
+                <option value="">-- Sélectionnez un  autre Directeur --</option>
                         @foreach($users as $user)
                         <option value="{{ $user->id }}">Mr ou Mme {{ $user->nom }}</option>
                         @endforeach
             </select>
-        @error('responsable_ufr_id')
-            <span>{{ $message }}</span>
-        @enderror
-
     </div>
-    <button  type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Ajouter l'UFR</button>
+    <button  type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Modifier l'UFR</button>
     <div class="d-flex align-items-center justify-content-center">
         <p class="fs-5 mb-0 fw-bold">Vous ne pouvez pas cree un UFR?</p>
         <a class="text-primary fw-bold ms-2" href="{{route('dash')}}">Retourner</a>

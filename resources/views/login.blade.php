@@ -12,6 +12,16 @@
                 <a href="./index.html" class="text-nowrap logo-img text-center d-block py-3 w-100">
                     <img src="{{asset('Auth/assets/img/logo uabd.jpg')}}" width="180"  alt="">
                 </a>
+                @if(session('success'))
+                <div class="alert alert-danger">
+                    {{session('success')}}
+                </div>
+                @endif
+                @error('email')
+                        <div class="alert alert-danger">
+                                {{('email ou Mots de passe Incorrect')}}
+                        </div>
+                @enderror
                 <form action="{{route('authentifier')}}" method="POST">
                     @csrf
                     @method('post')
