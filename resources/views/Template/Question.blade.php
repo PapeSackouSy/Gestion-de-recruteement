@@ -56,4 +56,4 @@
       </div>
 
     </div>
-  </section><!-- End Frequently Asked Questions Section -->
+  </section>

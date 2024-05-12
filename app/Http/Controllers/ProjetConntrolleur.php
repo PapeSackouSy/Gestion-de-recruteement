@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\AuthRequest;
 use App\Models\User;
+use App\Models\Ufr;
 use Illuminate\Support\facades\Auth;
 class ProjetConntrolleur extends Controller
 {
@@ -36,4 +37,36 @@ class ProjetConntrolleur extends Controller
 
 
         }
+        public function logout(Request $request)
+        {
+            Auth::logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+
+            return redirect('/');
+        }
+             public function VueUFR()
+            {
+                $users = User::where('role', 'Directeur_UFR')->get();
+                return view('usecase.AjouterUfr',compact('users'));
+            }
+            public function store(Request $request)
+            {
+                $request->validate([
+                    'nom' => 'required|string|max:255',
+                    'responsable_ufr_id' => 'required|unique:ufrs,responsable_ufr_id',
+                ]);
+
+                $ufr = Ufr::create([
+                    'nom' => $request->nom,
+                    'responsable_ufr_id' => $request->responsable_ufr_id,
+                ]);
+
+                return redirect()->back()->with('success', 'UFR créé avec succès!');
+            }
+            public function Afficher()
+            {
+                $tab = Ufr::all();
+                return view('usecase.AfficherUfr',compact('tab'));
+            }
 }

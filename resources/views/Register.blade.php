@@ -6,7 +6,7 @@
       class="position-relative overflow-hidden radial-gradient min-vh-100 d-flex align-items-center justify-content-center">
       <div class="d-flex align-items-center justify-content-center w-100">
         <div class="row justify-content-center w-100">
-          <div class="col-md-3 col-lg-6 col-xxl-3">
+          <div class="col-md-4 col-lg-3 col-xxl-3">
             <div class="card mb-0">
               <div class="card-body">
                 <a href="./index.html" class="text-nowrap logo-img text-center d-block py-3 w-100">
@@ -42,18 +42,17 @@
                   </div>
                   <div class="mb-2">
                     <select name="role" >
-                          <option value="admin">Administrateur</option>
+                          <option value="administrateur">Administrateur</option>
                           <option value="DRH">DRH</option>
                           <option value="Vice-Recteur">Vice-Recteur</option>
-                          <option value="Direction D'UFR">Direction D'UFR</option>
-                          <option value="DEPARTEMENT">Departemnet</option>
+                          <option value="Directeur_UFR">Directeur D'UFR</option>
+                          <option value="Responsable de Departement">Responsable de Departement</option>
                           <option value="Candidat">Candidat</option>
                     </select>
                   </div>
                   <div class="mb-2">
                     <button  type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Inscription</a>
                   </div>
-
                   <div class="d-flex align-items-center justify-content-center">
                     <p class="fs-4 mb-0 fw-bold">Vous Avez deja un compte?</p>
                     <a class="text-primary fw-bold ms-2" href="{{route('login')}}">Se connecte</a>
@@ -64,28 +63,7 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-6 text-center">
-        <div class="sign-in-detail text-white">
-            <a class="sign-in-logo mb-3" href="#"><img src="{{asset('Auth/assets/img/logo uabd.jpg')}}" class="img-fluid" alt="logo"></a>
-            <div class="slick-slider11">
-                <div class="item">
-                    <img src="{{asset('Auth/Asset2/images/login/1.png')}}" class="img-fluid mb-2" alt="logo">
-                    <h4 class="mb-1 text-white">Manage your orders</h4>
-                    <p>It is a long established fact that a reader will be distracted by the readable content.</p>
-                </div>
-                <div class="item">
-                    <img src="{{asset('Auth/Asset2/images/login/1.png')}}" class="img-fluid mb-2" alt="logo">
-                    <h4 class="mb-1 text-white">Manage your orders</h4>
-                    <p>It is a long established fact that a reader will be distracted by the readable content.</p>
-                </div>
-                <div class="item">
-                    <img src="{{asset('Auth/Asset2/images/login/1.png')}}" class="img-fluid mb-2" alt="logo">
-                    <h4 class="mb-1 text-white">Manage your orders</h4>
-                    <p>It is a long established fact that a reader will be distracted by the readable content.</p>
-                </div>
-            </div>
-        </div>
     </div>
-    </div>
+
   </div>
   @endsection

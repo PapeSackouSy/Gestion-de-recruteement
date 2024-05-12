@@ -19,4 +19,8 @@ class AuthenficationControlleur extends Controller
     {
         return view('Dashboard.Dashboard');
     }
+    public function VueUFR()
+    {
+        return view('usecase.AjouterUfr');
+    }
 }

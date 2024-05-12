@@ -9,7 +9,7 @@
         <meta content="" name="keywords">
 
         <!-- Favicons -->
-        <link href="assets/img/favicon.png" rel="icon">
+        <link rel="shortcut icon" href="{{asset('Auth/assets/img/logo uabd.jpg')}}" />
         <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
         <!-- Google Fonts -->
@@ -31,7 +31,7 @@
 <div id="topbar" class="fixed-top d-flex align-items-center ">
     <div class="container d-flex align-items-center justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
-        <i class="bi bi-envelope-fill"></i><a href="mailto:contact@example.com">info@example.com</a>
+        <i class="bi bi-envelope-fill"></i><a href="mailto:contact@example.com">uadb.edu.sn</a>
         <i class="bi bi-phone-fill phone-icon"></i> +1 5589 55488 55
       </div>
       <div class="cta d-none d-md-block">
@@ -42,8 +42,7 @@
 <header id="header" class="fixed-top d-flex align-items-center ">
     <div class="container d-flex align-items-center justify-content-between">
 
-      <h1 class="logo"><a href="index.html">Anyar</a></h1>
-
+      <h1 class="logo"><a href="index.html">uadb-recrutement</a></h1>
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>

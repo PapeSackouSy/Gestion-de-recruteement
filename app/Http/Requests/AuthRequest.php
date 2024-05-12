@@ -27,7 +27,7 @@ class AuthRequest extends FormRequest
            'prenom'=>'required',
            'adresse'=>'required',
            'telephone'=>'required',
-           'email'=>'required',
+           'email'=>'required|unique:users,email,id',
            'password'=>'required',
            'role'=>'required'
         ];
