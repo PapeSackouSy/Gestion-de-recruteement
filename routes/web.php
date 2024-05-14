@@ -19,3 +19,7 @@ Route::get('ufr/afficher',[ProjetConntrolleur::class,'Afficher'])->name('affiche
 Route::get('ufr/{id}/Editer',[ProjetConntrolleur::class,'EditerUfr'])->name('editerufr');
 Route::get('ufr/{id}/Supprimer',[ProjetConntrolleur::class,'supprimerUfr'])->name('DropUfr');
 Route::put('ufr/{id}/update',[ProjetConntrolleur::class,'UpdateUfr'])->name('updateUfr');
+Route::get('user/affiche',[ProjetConntrolleur::class,'AfficherUSERS'])->name('afficherUser');
+Route::get('user/{id}/editer',[ProjetConntrolleur::class,'EditerUser'])->name('editeruser');
+Route::put('user/{id}/update',[ProjetConntrolleur::class,'updateUser'])->name('updateUser');
+Route::get('user/{id}/supprimer',[ProjetConntrolleur::class,'deleteApp'])->name('deleteApp');

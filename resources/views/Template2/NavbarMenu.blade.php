@@ -12,30 +12,18 @@
        <li>
           <a href="#userinfo" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i class="ri-user-line"></i><span>User</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
           <ul id="userinfo" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-             <li><a href="profile.html"><i class="ri-profile-line"></i>User Profile</a></li>
-             <li><a href="profile-edit.html"><i class="ri-file-edit-line"></i>User Edit</a></li>
-             <li><a href="add-user.html"><i class="ri-user-add-line"></i>User Add</a></li>
-             <li><a href="user-list.html"><i class="ri-file-list-line"></i>User List</a></li>
+             <li><a href="{{route('afficherUser')}}"><i class="ri-file-list-line"></i>User List</a></li>
           </ul>
        </li>
        <li><a href="calendar.html" class="iq-waves-effect"><i class="ri-calendar-2-line"></i><span>Calendar</span></a></li>
        <li><a href="chat.html" class="iq-waves-effect"><i class="ri-message-line"></i><span>Chat</span></a></li>
 
-       <li class="iq-menu-title"><i class="ri-subtract-line"></i><span>Pages</span></li>
-       <li>
-          <a href="#authentication" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i class="ri-pages-line"></i><span>Authentication</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-          <ul id="authentication" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-             <li><a href="sign-in.html"><i class="ri-login-box-line"></i>Login</a></li>
-             <li><a href="sign-up.html"><i class="ri-login-circle-line"></i>Register</a></li>
-             <li><a href="pages-recoverpw.html"><i class="ri-record-mail-line"></i>Recover Password</a></li>
-             <li><a href="pages-confirm-mail.html"><i class="ri-file-code-line"></i>Confirm Mail</a></li>
-             <li><a href="pages-lock-screen.html"><i class="ri-lock-line"></i>Lock Screen</a></li>
-          </ul>
-       </li>
+
        <li>
           <a href="#map-page" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i class="ri-map-pin-user-line"></i><span>Maps</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
           <ul id="map-page" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-             <li><a href="pages-map.html"><i class="ri-google-line"></i>Google Map</a></li>
+             <li><a href="https://www.google.com/maps/dir/Senegal/Universit%C3%A9+de+Bambey,+Bambey,+Senegal/@14.2792088,-15.9764608,9z/data=!4m13!4m12!1m5!1m1!1s0xec172f5b3c5bb71:0x5a46a55099615940!2m2!1d-14.452362!2d14.497401!1m5!1m1!1s0xeea09719f211b75:0x90dc153ff6216750!2m2!1d-16.4783497!2d14.6959099?hl=en&entry=ttu"><i class="ri-google-line"></i>Google Map</a></li>
+
           </ul>
        </li>
        <li>

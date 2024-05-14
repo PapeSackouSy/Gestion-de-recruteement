@@ -20,7 +20,7 @@ class ProjetConntrolleur extends Controller
     $user->password =$request->password;
     $user->role = $request->role;
     $user->save();
-    return redirect()->route('login')->with('success','Votre Compte a ete cree');
+    return redirect()->route('login')->with('success1','Votre Compte a ete cree');
  }
         public function authenticate(Request $request)
         {
@@ -88,5 +88,34 @@ class ProjetConntrolleur extends Controller
                 $ufrdelete=Ufr::find($id);
                 $ufrdelete->delete();
                 return redirect()->route('afficher')->with('success','UFR a ete supprimer avec success');
+            }
+            public function AfficherUSERS()
+            {
+                $user=User::all();
+                return view('Users.AfficherUsers',compact('user'));
+            }
+            public function EditerUser($id)
+            {
+                $user=User::find($id);
+                return view('Users.EditerUser',compact('user'));
+            }
+            public function updateUser(User $user,Request $request)
+            {
+                $user=User::find($request->id);
+                $user->nom = $request->nom;
+                $user->prenom = $request->prenom;
+                $user->adresse = $request->adresse;
+                $user->telephone = $request->telephone;
+                $user->email = $request->email;
+                $user->password =$request->password;
+                $user->role = $request->role;
+                $user->update();
+                return redirect()->route('afficherUser')->with('success', 'Utilisateur mis à jour avec succès!');
+            }
+            public function deleteApp(Request $request)
+            {
+                $user = User::find($request->id);
+                $user->delete();
+                return redirect()->route('afficherUser')->with('success', 'Utilisateur supprimé avec succès!');
             }
 }

@@ -47,7 +47,6 @@
             <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
           </div>
         </div>
-
       </div>
     </div>
   </div>

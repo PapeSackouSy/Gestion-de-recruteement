@@ -13,49 +13,52 @@
                   <img src="{{asset('Auth/assets/img/logo uabd.jpg')}}" width="180"  alt="">
                 </a>
                 <p class="text-center text-primary mb-8"></p>
-                <form method="post" action="{{route('registerApp')}}">
+
+
+
+                <form method="post" action="{{route('updateUser',$user->id)}}">
                     @csrf
-                    @method('post')
+                    @method('put')
                   <div class="mb-2">
                     <label for="exampleInputtext1" class="form-label">Nom</label>
-                    <input type="text"  name="nom" class="form-control" id="exampleInputtext1" aria-describedby="textHelp">
+                    <input type="text"  name="nom" class="form-control" id="exampleInputtext1" aria-describedby="textHelp" value="{{$user->nom}}">
                   </div>
                   <div class="mb-2">
                     <label for="exampleInputEmail1" class="form-label">Prenom</label>
-                    <input type="text"  name="prenom" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <input type="text"  name="prenom" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$user->prenom}}">
                   </div>
                   <div class="mb-2">
                     <label for="exampleInputEmail1" class="form-label">Address</label>
-                    <input type="text"  name="adresse" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <input type="text"  name="adresse" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$user->adresse}}">
                   </div>
                   <div class="mb-2">
                     <label for="exampleInputEmail1" class="form-label">Telephone</label>
-                    <input type="text"  name="telephone" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <input type="text"  name="telephone" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$user->telephone}}">
                   </div>
                   <div class="mb-2">
                     <label for="exampleInputEmail1" class="form-label">Email Address</label>
-                    <input type="email"  name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <input type="email"  name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$user->email}}">
                   </div>
                   <div class="mb-2">
                     <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+                    <input type="password" name="password" class="form-control" id="exampleInputPassword1"  >
                   </div>
                   <div class="mb-2">
                     <select name="role" >
                           <option value="administrateur">Administrateur</option>
                           <option value="DRH">DRH</option>
-                          <option value="Vice_Recteur">Vice-Recteur</option>
+                          <option value="Vice-Recteur">Vice-Recteur</option>
                           <option value="Directeur_UFR">Directeur D'UFR</option>
-                          <option value="Responsable_Departement">Responsable_Departement</option>
+                          <option value="Responsable_Departement">Responsable Departement</option>
                           <option value="Candidat">Candidat</option>
                     </select>
                   </div>
                   <div class="mb-2">
-                    <button  type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Inscription</a>
+                    <button  type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Modifier</a>
                   </div>
                   <div class="d-flex align-items-center justify-content-center">
-                    <p class="fs-4 mb-0 fw-bold">Vous Avez deja un compte?</p>
-                    <a class="text-primary fw-bold ms-2" href="{{route('login')}}">Se connecte</a>
+                    <p class="fs-4 mb-0 fw-bold">Voulez-vous?</p>
+                    <a class="text-primary fw-bold ms-2" href="{{route('dash')}}">Retourner</a>
                   </div>
                 </form>
               </div>
@@ -64,6 +67,5 @@
         </div>
       </div>
     </div>
-
   </div>
   @endsection
