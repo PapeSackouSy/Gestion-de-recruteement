@@ -118,4 +118,5 @@ class ProjetConntrolleur extends Controller
                 $user->delete();
                 return redirect()->route('afficherUser')->with('success', 'Utilisateur supprimé avec succès!');
             }
+
 }

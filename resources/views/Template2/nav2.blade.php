@@ -1,7 +1,5 @@
 <nav class="iq-sidebar-menu">
     <ul id="iq-sidebar-toggle" class="iq-menu">
-        @auth
-        @if (Auth::user()->role=="administrateur")
        <li class="iq-menu-title"><i class="ri-subtract-line"></i><span>Home</span></li>
        <li class="active">
           <a href="index.html" class="iq-waves-effect"><i class="ri-home-4-line"></i><span>Dashboard</span></a>
@@ -15,6 +13,13 @@
              <li><a href="{{route('afficherUser')}}"><i class="ri-file-list-line"></i>User List</a></li>
           </ul>
        </li>
+       <li>
+        <a href="#userinfo" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i class="ri-user-line"></i><span>Departement</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+        <ul id="userinfo" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+           <li><a href="{{route('afficherDep')}}"><i class="ri-file-list-line"></i>Ajouter Departement</a></li>
+           <li><a href="#"><i class="ri-file-list-line"></i>Lister Departement</a></li>
+        </ul>
+      </li>
        <li><a href="calendar.html" class="iq-waves-effect"><i class="ri-calendar-2-line"></i><span>Calendar</span></a></li>
        <li><a href="chat.html" class="iq-waves-effect"><i class="ri-message-line"></i><span>Chat</span></a></li>
 
@@ -34,9 +39,5 @@
             </li>
           </ul>
        </li>
-       @endif
-
-       @endauth
-
     </ul>
  </nav>

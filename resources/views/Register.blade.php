@@ -46,7 +46,7 @@
                           <option value="DRH">DRH</option>
                           <option value="Vice_Recteur">Vice-Recteur</option>
                           <option value="Directeur_UFR">Directeur D'UFR</option>
-                          <option value="Responsable_Departement">Responsable_Departement</option>
+                          <option value="responsable_departement">responsable_departement</option>
                           <option value="Candidat">Candidat</option>
                     </select>
                   </div>

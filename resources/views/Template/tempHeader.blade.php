@@ -10,7 +10,7 @@
 
         <!-- Favicons -->
         <link rel="shortcut icon" href="{{asset('Auth/assets/img/logo uabd.jpg')}}" />
-        <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+        <link href="{{asset('Auth/assets/img/nouveau-logo-uadb.png')}}" rel="apple-touch-icon">
 
         <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -41,11 +41,12 @@
   </div>
 <header id="header" class="fixed-top d-flex align-items-center ">
     <div class="container d-flex align-items-center justify-content-between">
-
-      <h1 class="logo"><a href="index.html">uadb-recrutement</a></h1>
+         <img src="{{asset('Auth/assets/img/nouveau-logo-uadb.png')}}" width="380" alt="">
+          <h1 class="logo" ><a href="index.html"></a></h1>
+          <nav id="navbar" class="navbar"  >
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto " href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">About</a></li>
           <li><a class="nav-link scrollto" href="#services">Services</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
@@ -53,6 +54,6 @@
           <li class="nav-item"><a class="nav-link btn btn-primary" href="{{route('register')}}">Register</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
+      </nav>
     </div>
   </header>

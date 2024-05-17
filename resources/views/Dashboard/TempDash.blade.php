@@ -27,7 +27,7 @@
                </div>
             </div>
             <div id="sidebar-scrollbar">
-              @include('Template2.NavbarMenu')
+              @include('Template2.nav2')
                <div class="p-3"></div>
             </div>
          </div>

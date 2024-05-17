@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->enum('role', ['administrateur', 'DRH','Vice_Recteur','Directeur_UFR','responsable_departement', 'Candidat']);
             $table->rememberToken();
             $table->timestamps();
         });

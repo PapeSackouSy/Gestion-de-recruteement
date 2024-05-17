@@ -24,6 +24,11 @@ class User extends Authenticatable
      {
          return $this->hasOne(Ufr::class, 'responsable_ufr_id');
      }
+     public function DepartementResponsable()
+     {
+         return $this->hasOne(Departement::class, 'responsable_departement_id');
+     }
+
 
     protected $hidden = [
         'password',

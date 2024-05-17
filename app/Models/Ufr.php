@@ -14,4 +14,8 @@ class Ufr extends Model
     {
         return $this->belongsTo(User::class, 'responsable_ufr_id');
     }
+    public function posts()
+    {
+        return $this->hasMany(Departement::class);
+    }
 }

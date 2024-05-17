@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthenficationControlleur;
 use App\Http\Controllers\ProjetConntrolleur;
+use App\Http\Controllers\DepartementControlleur;
 Route::get('/', function () {
     return view('layout');
 })->name('layout');
@@ -23,3 +24,9 @@ Route::get('user/affiche',[ProjetConntrolleur::class,'AfficherUSERS'])->name('af
 Route::get('user/{id}/editer',[ProjetConntrolleur::class,'EditerUser'])->name('editeruser');
 Route::put('user/{id}/update',[ProjetConntrolleur::class,'updateUser'])->name('updateUser');
 Route::get('user/{id}/supprimer',[ProjetConntrolleur::class,'deleteApp'])->name('deleteApp');
+
+Route::prefix('departement')->group(function () {
+    Route::get('/Afficher', [DepartementControlleur::class,'AfficherDepartement'])->name('afficherDep');
+    Route::post('/Ajouter',[DepartementControlleur::class,'AjouterDep'])->name('AjouterDep');
+    Route::get('/listeDepartement',[DepartementControlleur::class,'listerDepartement'])->name('listeDep');
+});
