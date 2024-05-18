@@ -17,8 +17,6 @@ return new class extends Migration
             $table->string('description');
             $table->string('image')->nullable();
             $table->String('Status');
-            $table->unsignedBigInteger('id_departement')->nullable();
-            $table->foreign('id_departement')->references('id')->on('ufrs')->onDelete('set null');
             $table->timestamps();
         });
     }

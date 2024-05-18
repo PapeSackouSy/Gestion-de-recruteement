@@ -72,7 +72,6 @@
        </li>
 
     </ul>
-</nav>
 @include('Template2.NavbarAdmin')
 @include('Template2.Statistic')
 @endif
@@ -95,12 +94,26 @@
         </li>
         <li><a href="calendar.html" class="iq-waves-effect"><i class="ri-calendar-2-line"></i><span>Calendar</span></a></li>
         <li><a href="chat.html" class="iq-waves-effect"><i class="ri-message-line"></i><span>Chat</span></a></li>
-</nav>
+      </nav>
         @include('Template2.NavbarAdmin')
-@endif
+    @endif
 @endforeach
 @endif
-@endauth
+@if (Auth::user()->role == "responsable_departement" )
+    @foreach ($usecaseDep as $user)
+      @if ($user->responsable_departement_id == Auth::user()->id)
+            <li class="iq-menu-title"><i class="ri-subtract-line"></i><span>Home</span></li>
+            <li class="active">
+                <a href="index.html" class="iq-waves-effect"><i class="ri-home-4-line"></i><span>Dashboard</i> </a>
+            </li>
+            <li class="iq-menu-title"><i class="ri-subtract-line"></i><span>Apps</span></li>
+            <li><a href="{{route('afficherOffre')}}" class="iq-waves-effect" aria-expanded="false"><i class="ri-chat-check-line"></i> <span>Definir Offres</span></a></li>
+        </nav>
+        @include('Template2.NavbarAdmin')
+            @endif
+     @endforeach
+@endif
+  @endauth
 </div>
 </div>
 @endsection

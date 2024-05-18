@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthenficationControlleur;
 use App\Http\Controllers\ProjetConntrolleur;
 use App\Http\Controllers\DepartementControlleur;
+use App\Http\Controllers\OffreControlleur;
+
 Route::get('/', function () {
     return view('layout');
 })->name('layout');
@@ -29,4 +31,9 @@ Route::prefix('departement')->group(function () {
     Route::get('/Afficher', [DepartementControlleur::class,'AfficherDepartement'])->name('afficherDep');
     Route::post('/Ajouter',[DepartementControlleur::class,'AjouterDep'])->name('AjouterDep');
     Route::get('/listeDepartement',[DepartementControlleur::class,'listerDepartement'])->name('listeDep');
+});
+
+Route::prefix('offre')->group(function () {
+    Route::get('/Afficher', [OffreControlleur::class,'index'])->name('afficherOffre');
+    Route::post('/Ajouter',[OffreControlleur::class,'create'])->name('AjouterOffre');
 });

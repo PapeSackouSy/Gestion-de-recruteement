@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Ufr;
+use App\Models\Departement;
 class AuthenficationControlleur extends Controller
 {
 
@@ -18,7 +19,8 @@ class AuthenficationControlleur extends Controller
     public function dashboard()
     {
         $usecase=ufr::all();
-        return view('Dashboard.Dashboard',compact('usecase'));
+        $usecaseDep=Departement::all();
+        return view('Dashboard.Dashboard',compact('usecase','usecaseDep'));
     }
     public function VueUFR()
     {

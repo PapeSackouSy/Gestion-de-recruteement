@@ -17,8 +17,5 @@ class Departement extends Model
     {
         return $this->belongsTo(Ufr::class, 'id_ufr');
     }
-    public function posts()
-    {
-        return $this->hasMany(Offre::class);
-    }
+
 }
