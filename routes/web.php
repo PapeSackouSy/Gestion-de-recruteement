@@ -35,5 +35,7 @@ Route::prefix('departement')->group(function () {
 
 Route::prefix('offre')->group(function () {
     Route::get('/Afficher', [OffreControlleur::class,'index'])->name('afficherOffre');
-    Route::post('/Ajouter',[OffreControlleur::class,'create'])->name('AjouterOffre');
+    Route::post('/Ajouter',[OffreControlleur::class,'store'])->name('AjouterOffre');
+    Route::get('/listeOffre',[OffreControlleur::class,'show'])->name('listeOffre');
+    Route::get('/AvisdeRecrutement',[OffreControlleur::class,'edit'])->name('Avis');
 });

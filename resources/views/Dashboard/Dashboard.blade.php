@@ -51,15 +51,24 @@
            <li><a href="{{route('listeDep')}}"><i class="ri-file-list-line"></i>Lister Departement</a></li>
         </ul>
      </li>
-       <li><a href="calendar.html" class="iq-waves-effect"><i class="ri-calendar-2-line"></i><span>Calendar</span></a></li>
-       <li><a href="chat.html" class="iq-waves-effect"><i class="ri-message-line"></i><span>Chat</span></a></li>
-
-
+       <li>
+        <a href="#userinfo" class="iq-waves-effect"><i class="ri-calendar-2-line"></i><span>DRH</span></a>
+        <ul id="userinfo" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+            <li><a href="#"><i class="ri-file-list-line"></i>Ajouter DRH</a></li>
+         </ul>
+      </li>
+      <li>
+        <a href="#extra-pages" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i class="ri-pantone-line"></i><span>Offre</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+        <ul id="extra-pages" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+           <li>
+            <li><a href="{{route('listeOffre')}}"><i class="ri-file-list-line"></i>Lister Offres</a></li>
+          </li>
+        </ul>
+     </li>
        <li>
           <a href="#map-page" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i class="ri-map-pin-user-line"></i><span>Maps</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
           <ul id="map-page" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
              <li><a href="https://www.google.com/maps/dir/Senegal/Universit%C3%A9+de+Bambey,+Bambey,+Senegal/@14.2792088,-15.9764608,9z/data=!4m13!4m12!1m5!1m1!1s0xec172f5b3c5bb71:0x5a46a55099615940!2m2!1d-14.452362!2d14.497401!1m5!1m1!1s0xeea09719f211b75:0x90dc153ff6216750!2m2!1d-16.4783497!2d14.6959099?hl=en&entry=ttu"><i class="ri-google-line"></i>Google Map</a></li>
-
           </ul>
        </li>
        <li>
@@ -72,12 +81,11 @@
        </li>
 
     </ul>
-@include('Template2.NavbarAdmin')
-@include('Template2.Statistic')
-@endif
-@if (Auth::user()->role == "Directeur_UFR" )
-@foreach ($usecase as $user)
-@if ($user->responsable_ufr_id == Auth::user()->id)
+            @include('Template2.NavbarAdmin')
+            @include('Template2.Statistic')
+@elseif (Auth::user()->role == "Directeur_UFR" )
+            @foreach ($usecase as $user)
+                    @if ($user->responsable_ufr_id == Auth::user()->id)
         <li class="iq-menu-title"><i class="ri-subtract-line"></i><span>Home</span></li>
         <li class="active">
            <a href="index.html" class="iq-waves-effect"><i class="ri-home-4-line"></i><span>Dashboard</span></a>
@@ -97,23 +105,23 @@
       </nav>
         @include('Template2.NavbarAdmin')
     @endif
-@endforeach
-@endif
-@if (Auth::user()->role == "responsable_departement" )
-    @foreach ($usecaseDep as $user)
-      @if ($user->responsable_departement_id == Auth::user()->id)
-            <li class="iq-menu-title"><i class="ri-subtract-line"></i><span>Home</span></li>
-            <li class="active">
-                <a href="index.html" class="iq-waves-effect"><i class="ri-home-4-line"></i><span>Dashboard</i> </a>
-            </li>
-            <li class="iq-menu-title"><i class="ri-subtract-line"></i><span>Apps</span></li>
-            <li><a href="{{route('afficherOffre')}}" class="iq-waves-effect" aria-expanded="false"><i class="ri-chat-check-line"></i> <span>Definir Offres</span></a></li>
-        </nav>
-        @include('Template2.NavbarAdmin')
-            @endif
      @endforeach
-@endif
+@elseif (Auth::user()->role == "responsable_departement" )
+            @foreach ($usecaseDep as $user)
+                @if ($user->responsable_departement_id == Auth::user()->id)
+                    <li class="iq-menu-title"><i class="ri-subtract-line"></i><span>Home</span></li>
+                    <li class="active">
+                        <a href="index.html" class="iq-waves-effect"><i class="ri-home-4-line"></i><span>Dashboard</i> </a>
+                    </li>
+                    <li class="iq-menu-title"><i class="ri-subtract-line"></i><span>Apps</span></li>
+                    <li><a href="{{route('afficherOffre')}}" class="iq-waves-effect" aria-expanded="false"><i class="ri-chat-check-line"></i> <span>Definir Offres</span></a></li>
+                   </nav>
+                    @include('Template2.NavbarAdmin')
+                @endif
+            @endforeach
+        @endif
+
   @endauth
-</div>
+    </div>
 </div>
 @endsection
