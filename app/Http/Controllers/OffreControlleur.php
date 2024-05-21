@@ -4,19 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Offre;
+use PDF;
 class OffreControlleur extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         return view('Offre.Offre');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
 
@@ -68,11 +64,18 @@ class OffreControlleur extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        $offres=Offre::find($id);
-        return view('Offre.AvisdeRecrutement',compact('offres'));
+            $offre = Offre::find($id);
+            if (!$offre) {
+
+                return redirect()->back()->with('error', 'Offre non trouvée.');
+            }
+            $data = ['offre' => $offre];
+            $pdf = PDF::loadView('Offre.AvisdeRecrutement', $data);
+            return $pdf->download('example.pdf');
     }
+
 
     /**
      * Update the specified resource in storage.

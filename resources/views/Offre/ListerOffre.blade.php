@@ -26,9 +26,9 @@
                 <tr>
                     <td>{{ $offre->libelle }}</td>
                     <td>
-                        <a href="{{$offre->id}}" class="btn btn-primary">Edit</a>
+                        <a href="#" class="btn btn-primary">Edit</a>
                         <a href="#" class="btn btn-danger">Delete</button>
-                        <a href="#" class="btn btn-success">Voir Tous</a>
+                        <a href="{{route('Avis', $offre->id)}}" class="btn btn-success">Voir Tous</a>
                     </td>
                 </tr>
             @endforeach

@@ -52,9 +52,9 @@
         </ul>
      </li>
        <li>
-        <a href="#userinfo" class="iq-waves-effect"><i class="ri-calendar-2-line"></i><span>DRH</span></a>
-        <ul id="userinfo" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-            <li><a href="#"><i class="ri-file-list-line"></i>Ajouter DRH</a></li>
+        <a href="#drhaffiche" c class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i  class="ri-user-line"></i><span>DRH</span></a>
+        <ul id="drhaffiche" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+            <li><a href="{{route('drhafficher')}}"><i class="ri-file-list-line"></i>Ajouter DRH</a></li>
          </ul>
       </li>
       <li>
@@ -119,9 +119,21 @@
                     @include('Template2.NavbarAdmin')
                 @endif
             @endforeach
-        @endif
-
-  @endauth
+@elseif (Auth::user()->role =="DRH")
+@foreach ($usecaseDRH as $user)
+    @if ($user->email == Auth::user()->email)
+                <li class="iq-menu-title"><i class="ri-subtract-line"></i><span>Home</span></li>
+                <li class="active">
+                    <a href="index.html" class="iq-waves-effect"><i class="ri-home-4-line"></i><span>Dashboard</i> </a>
+                </li>
+                <li class="iq-menu-title"><i class="ri-subtract-line"></i><span>Apps</span></li>
+                <li><a href="{{route('listeOffre')}}" class="iq-waves-effect" aria-expanded="false"><i class="ri-chat-check-line"></i> <span>Definir Offres</span></a></li>
+            </nav>
+    @include('Template2.NavbarAdmin')
+@endif
+@endforeach
+@endif
+@endauth
     </div>
 </div>
 @endsection

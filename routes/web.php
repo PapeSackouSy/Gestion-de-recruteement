@@ -5,7 +5,7 @@ use App\Http\Controllers\AuthenficationControlleur;
 use App\Http\Controllers\ProjetConntrolleur;
 use App\Http\Controllers\DepartementControlleur;
 use App\Http\Controllers\OffreControlleur;
-
+use App\Http\Controllers\ProjetControlleurDRH;
 Route::get('/', function () {
     return view('layout');
 })->name('layout');
@@ -32,10 +32,13 @@ Route::prefix('departement')->group(function () {
     Route::post('/Ajouter',[DepartementControlleur::class,'AjouterDep'])->name('AjouterDep');
     Route::get('/listeDepartement',[DepartementControlleur::class,'listerDepartement'])->name('listeDep');
 });
-
+Route::prefix('DRH')->group(function(){
+    Route::get('/Afficher',[ProjetControlleurDRH::class,'AfficherDRH'])->name('drhafficher');
+    Route::post('/Ajouter',[ProjetControlleurDRH::class,'store'])->name('AjouterDRH');
+});
 Route::prefix('offre')->group(function () {
     Route::get('/Afficher', [OffreControlleur::class,'index'])->name('afficherOffre');
     Route::post('/Ajouter',[OffreControlleur::class,'store'])->name('AjouterOffre');
     Route::get('/listeOffre',[OffreControlleur::class,'show'])->name('listeOffre');
-    Route::get('/AvisdeRecrutement',[OffreControlleur::class,'edit'])->name('Avis');
+    Route::get('/{id}/AvisdeRecrutement',[OffreControlleur::class,'edit'])->name('Avis');
 });
