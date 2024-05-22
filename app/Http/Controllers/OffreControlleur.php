@@ -73,23 +73,56 @@ class OffreControlleur extends Controller
             }
             $data = ['offre' => $offre];
             $pdf = PDF::loadView('Offre.AvisdeRecrutement', $data);
-            return $pdf->download('example.pdf');
+            return $pdf->download('AvisdeRecrutement.pdf');
     }
-
+    public  function EditerOffre($id){
+      $offres=OfFre::find($id);
+      return view('Offre.EditerOffre',compact('offres'));
+    }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+    public function update(Request $request)
+{
+    $request->validate([
+        'libelle' => 'required|string',
+        'profil_poste' => 'required|string',
+        'diplomes_requis' => 'required|string',
+        'experience_professionnelle' => 'required|string',
+        'details' => 'required|string',
+        'description' => 'required|string',
+        'profils_competences' => 'required|string',
+        'composition_dossier' => 'required|string',
+        'depot_candidature' => 'required|string',
+        'status' => 'required|string',
+        'Date_open' => 'nullable|date',
+        'Date_close' => 'nullable|date',
+    ]);
+    $offre = Offre::find($request->id);
+    $offre->libelle = $request->input('libelle');
+    $offre->profil_poste = $request->input('profil_poste');
+    $offre->diplomes_requis = $request->input('diplomes_requis');
+    $offre->experience_professionnelle = $request->input('experience_professionnelle');
+    $offre->details = $request->input('details');
+    $offre->description = $request->input('description');
+    $offre->profils_competences = $request->input('profils_competences');
+    $offre->composition_dossier = $request->input('composition_dossier');
+    $offre->depot_candidature = $request->input('depot_candidature');
+    $offre->status = $request->input('status');
+    $offre->Date_open = $request->input('Date_open');
+    $offre->Date_close = $request->input('Date_close');
+    $offre->update();
 
+    return redirect()->route('listeOffre')->with('success', 'Offre a ete modifier avec success');
+}
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy( $id)
     {
-        //
+      $offre = Offre::find($id);
+      $offre->delete();
+      return redirect()->route('listeOffre')->with('success', 'Offre Offre a ete supprimer avec success');
     }
 }

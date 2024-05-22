@@ -1,20 +1,19 @@
-@extends('Dashboard.TempDash')
-@section('containe2-page2')
+@extends('Dashboard.Dashboard')
+@section('name-containt2')
   <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
     data-sidebar-position="fixed" data-header-position="fixed">
     <div
-      class="position-relative overflow-hidden radial-gradient min-vh-100 d-flex align-items-center justify-content-center">
-      <div class="d-flex align-items-center justify-content-center w-100">
-        <div class="row justify-content-center w-100">
+      class="position-relative overflow-hidden radial-gradient min-vh-80 d-flex align-items-center justify-content-center">
           <div class="col-md-7 col-lg-7 col-xxl-4">
-            <div class="card mb-0">
-              <div class="card-body">
                 @if(session('success'))
                 <div class="alert alert-success">
                     {{session('success')}}
                 </div>
                 @endif
-<table id="user-list-table" class="table table-striped table-borderless mt-6" role="grid" aria-describedby="user-list-page-info">
+                <div class="container">
+                    <h2>Liste Departement</h2>
+              <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Rechercher un livre..">
+                <table id="dataTable">
     <thead>
         <tr>
            <th>ID</th>
@@ -40,13 +39,9 @@
          </tr>
         @endforeach
 </div>
-
-</div>
-</div>
-</div>
-</div>
 </div>
 </div>
     </tbody>
   </table>
+  <button class="btn btn-success"><a href="{{route('dash')}} ">Retourner</a></button>
 @endsection

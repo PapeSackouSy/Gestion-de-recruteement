@@ -41,4 +41,7 @@ Route::prefix('offre')->group(function () {
     Route::post('/Ajouter',[OffreControlleur::class,'store'])->name('AjouterOffre');
     Route::get('/listeOffre',[OffreControlleur::class,'show'])->name('listeOffre');
     Route::get('/{id}/AvisdeRecrutement',[OffreControlleur::class,'edit'])->name('Avis');
+    Route::get('/{id}/Editer',[OffreControlleur::class,'EditerOffre'])->name('EditerOffre');
+    Route::post('/{id}/Update',[OffreControlleur::class,'update'])->name('UpdateOffre');
+    Route::get('/{id}/Supprimer',[OffreControlleur::class,'destroy'])->name('deleteOffre');
 });

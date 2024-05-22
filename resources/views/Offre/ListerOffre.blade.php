@@ -1,20 +1,19 @@
-@extends('Dashboard.TempDash')
-@section('containe2-page2')
-  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
-    data-sidebar-position="fixed" data-header-position="fixed">
-    <div
-      class="position-relative overflow-hidden radial-gradient min-vh-100 d-flex align-items-center justify-content-center">
-      <div class="d-flex align-items-center justify-content-center w-100">
-        <div class="row justify-content-center w-100">
-          <div class="col-md-7 col-lg-7 col-xxl-4">
-            <div class="card mb-0">
-              <div class="card-body">
+@extends('Template.Dashboardtemp')
+@section('name-containt2')
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+data-sidebar-position="fixed" data-header-position="fixed">
+<div
+  class="position-relative overflow-hidden radial-gradient min-vh-10 d-flex align-items-center justify-content-center">
+  <div class="col-md-7 col-lg-7 col-xxl-4">
                 @if(session('success'))
                 <div class="alert alert-success">
                     {{session('success')}}
                 </div>
                 @endif
-    <table id="offres-table" class="table table-striped " style="width:100% " >
+                <div class="container">
+                    <h2>Liste Offres</h2>
+              <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Rechercher">
+                <table id="dataTable">
         <thead>
             <tr>
                 <th>Titre</th>
@@ -26,9 +25,10 @@
                 <tr>
                     <td>{{ $offre->libelle }}</td>
                     <td>
-                        <a href="#" class="btn btn-primary">Edit</a>
-                        <a href="#" class="btn btn-danger">Delete</button>
+                        <a href="{{route('EditerOffre',$offre->id)}}" class="btn btn-primary">Edit</a>
+                        <a href="{{route('deleteOffre',$offre->id)}}" class="btn btn-danger">Delete</button>
                         <a href="{{route('Avis', $offre->id)}}" class="btn btn-success">Voir Tous</a>
+
                     </td>
                 </tr>
             @endforeach
@@ -38,6 +38,7 @@
 
 </div>
 </div>
+<button class="btn btn-success"><a href="{{route('dash')}} ">Retourner</a></button>
 </div>
 </div>
 </div>

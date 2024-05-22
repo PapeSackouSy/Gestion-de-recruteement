@@ -9,8 +9,10 @@
         @endif
 <div class="iq-card-body">
     <div class="table-responsive">
-       <table id="datatable" class="table table-striped table-bordered" >
-            <thead>
+        <div class="container">
+            <h2>LISTE DES UFR AVEC LEURS DIRECTEURS</h2>
+         <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Rechercher">
+        <table id="dataTable">
                 <tr>
                     <th>ID</th>
                     <th>Nom</th>
@@ -34,7 +36,7 @@
             <tbody>
 </table>
     </div>
-    <a href="{{route('dash')}} ">Retourner</a>
+    <button class="btn btn-success"><a href="{{route('dash')}} ">Retourner</a></button>
  </div>
 </div>
 @endsection

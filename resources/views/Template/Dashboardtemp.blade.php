@@ -17,11 +17,14 @@
       <link rel="stylesheet" href="{{asset('Auth/Asset2/css/style.css')}}">
       <!-- Responsive CSS -->
       <link rel="stylesheet" href="{{asset('Auth/Asset2/css/responsive.css')}}">
+      <link rel="stylesheet" href="{{asset('Auth/Asset2/css/styledata.css')}}">
+
+
    </head>
    <body class="sidebar-main-active right-column-fixed header-top-bgcolor">
     @yield('name-containt2')
    <script src="{{asset('Auth/Asset2/js/jquery.min.js')}}"></script>
-
+   <script src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script>
    <script src="{{asset('Auth/Asset2/js/popper.min.js')}}"></script>
    <script src="{{asset('Auth/Asset2/js/bootstrap.min.js')}}"></script>
    <!-- Appear JavaScript -->
@@ -59,11 +62,7 @@
    <script src="{{asset('Auth/Asset2/js/maps.js')}}"></script>
    <!-- am worldLow JavaScript -->
    <script src="{{asset('Auth/Asset2/js/worldLow.js')}}"></script>
-   <!-- ChartList Js -->
-   <script src="{{asset('Auth/Asset2/js/chartist/chartist.min.js')}}"></script>
-   <!-- Chart Custom JavaScript -->
-   <script async src="{{asset('Auth/Asset2/js/chart-custom.js')}}"></script>
-   <!-- Custom JavaScript -->
+   <script src="{{asset('Auth/Asset2/js/jsdate.js')}}"></script>
    <script src="{{asset('Auth/Asset2/js/custom.js')}}"></script>
 </body>
 </html>
