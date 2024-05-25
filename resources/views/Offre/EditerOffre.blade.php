@@ -50,6 +50,10 @@
             <label for="depot_candidature">Dépôt de Candidature</label>
             <textarea class="form-control" id="depot_candidature" name="depot_candidature" rows="2" >{{$offres->depot_candidature}}</textarea>
         </div>
+        <div class="form-group">
+            <label for="profils_competences">Photos</label>
+            <input type="file" class="form-control" id="photo" name="photo" value="{{$offres->photo}}">
+        </div>
         <div class="form-group mr-2">
             <label for="status" class="sr-only">Status</label>
             <select name="status" id="status" class="form-control" aria-describedby="textHelp">

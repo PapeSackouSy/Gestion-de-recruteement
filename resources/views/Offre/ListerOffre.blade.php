@@ -28,7 +28,6 @@ data-sidebar-position="fixed" data-header-position="fixed">
                         <a href="{{route('EditerOffre',$offre->id)}}" class="btn btn-primary">Edit</a>
                         <a href="{{route('deleteOffre',$offre->id)}}" class="btn btn-danger">Delete</button>
                         <a href="{{route('Avis', $offre->id)}}" class="btn btn-success">Voir Tous</a>
-
                     </td>
                 </tr>
             @endforeach
