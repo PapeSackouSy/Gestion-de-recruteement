@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Models\Offre;
 use setasign\Fpdi\Fpdi;
@@ -35,9 +33,9 @@ for ($pageNo = 1; $pageNo <= $pageCount; $pageNo++) {
     ];
     foreach ($formattedData as $key => $value) {
         $pdf->SetFont('Arial', 'B', 12);
-        $pdf->MultiCell(0, 10, "$key :", 0, 'L');
+        $pdf->MultiCell(0, 20, "$key :", 0, 'C');
         $pdf->SetFont('Arial', '', 10);
-        $pdf->MultiCell(0, 10, "$value\n", 0, 'L');
+        $pdf->MultiCell(0, 10, "$value\n", 0, 'C');
 
     }
 }

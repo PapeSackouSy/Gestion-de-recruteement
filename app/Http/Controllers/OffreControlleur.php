@@ -36,6 +36,13 @@ class OffreControlleur extends Controller
     ]);
 
     $offre = new Offre();
+    $photoName = null;
+    if ($request->hasFile('photos')) {
+        $photo = $request->file('photos');
+        $photoName = time(). '.'. $photo->getClientOriginalExtension();
+        $photo->move(public_path('storage/photos'), $photoName);
+    }
+    $offre->photos = $photoName;
     $offre->libelle = $request->input('libelle');
     $offre->profil_poste = $request->input('profil_poste');
     $offre->diplomes_requis = $request->input('diplomes_requis');
@@ -100,6 +107,13 @@ class OffreControlleur extends Controller
         'Date_close' => 'nullable|date',
     ]);
     $offre = Offre::find($request->id);
+    $photoName = null;
+    if ($request->hasFile('photos')) {
+        $photo = $request->file('photos');
+        $photoName = time(). '.'. $photo->getClientOriginalExtension();
+        $photo->move(public_path('storage/photos'), $photoName);
+    }
+    $offre->photos = $photoName;
     $offre->libelle = $request->input('libelle');
     $offre->profil_poste = $request->input('profil_poste');
     $offre->diplomes_requis = $request->input('diplomes_requis');
@@ -124,5 +138,10 @@ class OffreControlleur extends Controller
       $offre = Offre::find($id);
       $offre->delete();
       return redirect()->route('listeOffre')->with('success', 'Offre Offre a ete supprimer avec success');
+    }
+    public function AfficherCandidature()
+    {
+        $offres=Offre::all();
+        return view('Offre.AfficherOffre',compact('offres'));
     }
 }

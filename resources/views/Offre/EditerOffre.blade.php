@@ -7,6 +7,10 @@
     <form action="{{route('UpdateOffre',$offres->id)}}" method="POST" enctype="multipart/form-data">
        @csrf
        @method('post')
+       <div class="form-group">
+        <label for="photos">Photos</label>
+        <input type="file" class="form-control" id="photos" name="photos" required>
+      </div>
         <div class="form-group">
             <label for="libelle">Libelle</label>
             <input type="text" class="form-control" id="libelle" name="libelle" value="{{$offres->libelle}}">

@@ -35,14 +35,13 @@
                          <p class="mb-0 font-size-12">Modify your personal details.</p>
                       </div>
                    </div>
-                </a>>
+                </a>
                 <div class="d-inline-block w-100 text-center p-3">
-                    <form action="{{route('logout')}}" method="post">
+                    <form action="{{route('logout')}}" method="GET">
                         @csrf
-                        @method('post')
+                        @method('GET')
                         <button class="btn btn-primary dark-btn-primary" type="submit">Deconnexion<i class="ri-login-box-line ml-2"></i></button>
                     </form>
-
                 </div>
              </div>
           </div>

@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('offres', function (Blueprint $table) {
             $table->id();
+            $table->string('photos')->nullable();
             $table->string('libelle');
             $table->string('profil_poste');
             $table->string('diplomes_requis');

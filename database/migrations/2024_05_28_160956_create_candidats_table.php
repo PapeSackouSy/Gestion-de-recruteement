@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('candidats', function (Blueprint $table) {
             $table->id();
-            $table->string('photo')->nullable();
-            $table->string('cv');
-            $table->string('motivation');
-            $table->string('date_naissance')->nullable();
-            $table->string('lieu_naissance')->nullable();
-            $table->string('nationalite')->nullable();
-            $table->string('sexe')->nullable();
-            $table->string('situation_matrimoniale')->nullable();
+            $table->String('photo');
+            $table->String('cv');
+            $table->String('motivation');
+            $table->date('date_naissance');
+            $table->String('lieu_naissance');
+            $table->String('nationalite');
+            $table->String('sexe');
+            $table->String('situation_matrimoniale');
             $table->timestamps();
         });
     }

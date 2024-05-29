@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Offre extends Model
 {
     use HasFactory;
+    public function getPhotoUrlAttribute()
+    {
+          return $this->photos ? asset('storage/offre_photos/' . $this->photos) : null;
+    }
 }

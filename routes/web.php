@@ -15,7 +15,7 @@ Route::get('/register',[AuthenficationControlleur::class,'RegisterAfficher'])->n
 Route::post('register',[ProjetConntrolleur::class,'Recuper'])->name('registerApp');
 Route::post('/login',[ProjetConntrolleur::class,'authenticate'])->name('authentifier');
 Route::get('/dashboard',[AuthenficationControlleur::class,'dashboard'])->name('dash');
-Route::post('/logout', [ProjetConntrolleur::class, 'logout'])->name('logout');
+Route::get('/logout', [ProjetConntrolleur::class, 'logout'])->name('logout');
 Route::get('/ufr',[AuthenficationControlleur::class,'VueUFR'])->name('ufr');
 Route::get('/ufr', [ProjetConntrolleur::class, 'VueUFR'])->name('ufr');
 Route::post('ufr/Ajouter',[ProjetConntrolleur::class, 'store'])->name('ajouterufr');
@@ -38,11 +38,12 @@ Route::prefix('DRH')->group(function(){
     Route::post('/Ajouter',[ProjetControlleurDRH::class,'store'])->name('AjouterDRH');
 });
 Route::prefix('offre')->group(function () {
-    Route::get('/Afficher', [OffreControlleur::class,'index'])->name('afficherOffre');
+    Route::get('/Afficherformulaire', [OffreControlleur::class,'index'])->name('AfficherOffres');
     Route::post('/Ajouter',[OffreControlleur::class,'store'])->name('AjouterOffre');
     Route::get('/listeOffre',[OffreControlleur::class,'show'])->name('listeOffre');
     Route::get('/{id}/AvisdeRecrutement',[PDFController::class,'modifyPDF'])->name('Avis');
     Route::get('/{id}/Editer',[OffreControlleur::class,'EditerOffre'])->name('EditerOffre');
     Route::post('/{id}/Update',[OffreControlleur::class,'update'])->name('UpdateOffre');
     Route::get('/{id}/Supprimer',[OffreControlleur::class,'destroy'])->name('deleteOffre');
+    Route::get('/Afficher',[OffreControlleur::class,'AfficherCandidature'])->name('candidature');
 });
