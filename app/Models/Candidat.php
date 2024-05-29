@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Candidat extends Model
 {
     use HasFactory;
+    protected $fillable = [ 'photo','cv', 'motivation','date_naissance','lieu_naissance','nationalite','sexe','situation_matrimoniale'];
+    public function dossiersDeCandidature()
+    {
+        return $this->hasMany(DossierCandidature::class);
+    }
 }

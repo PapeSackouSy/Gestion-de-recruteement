@@ -36,21 +36,23 @@
    <div class="container">
     <div class="row">
         @foreach ($offres as $offre)
-            <div class="col-md-5 mb-4">
-                <div class="card">
-                    @if ($offre->photos)
-                        <img src="{{ asset('storage/photos/'. $offre->photos) }}" alt="Offre photo">
-                    @else
-                        <p>Aucune photo disponible.</p>
-                    @endif
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $offre->libelle }}</h5>
-                        <p class="card-text">{{ Str::limit($offre->description, 100, '...') }}</p>
-                        <a href="{{route('Avis',$offre->id)}}" class="btn btn-primary">Avis de Recrutement</a>
-                        <a href="{{route('Postuler',$offre->id)}}" class="btn btn-success">Postuler</a>
+                @if($offre->Date_close=>{{{{ \Carbon\Carbon::now()->format('d-m-Y') }}}})
+                    <div class="col-md-5 mb-4">
+                        <div class="card">
+                            @if($offre->photos)
+                                <img src="{{ asset('storage/photos/'.$offre->photos) }}" alt="Offre photo">
+                            @else
+                                <p>Aucune photo disponible.</p>
+                            @endif
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $offre->libelle }}</h5>
+                                <p class="card-text">{{ Str::limit($offre->description, 100, '...') }}</p>
+                                <a href="{{route('Avis',$offre->id)}}" class="btn btn-primary">Avis de Recrutement</a>
+                                <a href="{{route('Postuler',$offre->id)}}" class="btn btn-success">Postuler</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
+                @endif
         @endforeach
     </div>
 </div>

@@ -13,7 +13,7 @@
                   <img src="{{asset('Auth/assets/img/logo uabd.jpg')}}" width="180"  alt="">
                 </a>
                 <p class="text-center text-primary mb-8"></p>
-                <form method="post" action="#" enctype="multipart/form-data">
+                <form method="post" action="{{route('AjouterPostuler',$offres->id)}}" enctype="multipart/form-data">
                     @csrf
                     @method('post')
                   <div class="mb-2">

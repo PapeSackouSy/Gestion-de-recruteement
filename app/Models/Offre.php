@@ -12,4 +12,9 @@ class Offre extends Model
     {
           return $this->photos ? asset('storage/offre_photos/' . $this->photos) : null;
     }
+
+    public function dossiersDeCandidature()
+    {
+        return $this->hasMany(DossierCandidature::class);
+    }
 }

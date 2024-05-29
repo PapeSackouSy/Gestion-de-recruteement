@@ -11,10 +11,15 @@ use App\Http\Controllers\CandidatureControlleur;
 Route::get('/', function () {
     return view('layout');
 })->name('layout');
+
 Route::get('/login',[AuthenficationControlleur::class,'LoginAfficher'])->name('login');
 Route::get('/register',[AuthenficationControlleur::class,'RegisterAfficher'])->name('register');
 Route::post('register',[ProjetConntrolleur::class,'Recuper'])->name('registerApp');
 Route::post('/login',[ProjetConntrolleur::class,'authenticate'])->name('authentifier');
+
+Route::middleware(['auth'])->group(function () {
+
+
 Route::get('/dashboard',[AuthenficationControlleur::class,'dashboard'])->name('dash');
 Route::get('/logout', [ProjetConntrolleur::class, 'logout'])->name('logout');
 Route::get('/ufr',[AuthenficationControlleur::class,'VueUFR'])->name('ufr');
@@ -48,4 +53,8 @@ Route::prefix('offre')->group(function () {
     Route::get('/{id}/Supprimer',[OffreControlleur::class,'destroy'])->name('deleteOffre');
     Route::get('/Afficher',[OffreControlleur::class,'AfficherCandidature'])->name('candidature');
     Route::get('{id}/postuler',[CandidatureControlleur::class,'index'])->name('Postuler');
+    Route::post('{id}/postuler',[CandidatureControlleur::class,'store'])->name('AjouterPostuler');
+});
+
+
 });

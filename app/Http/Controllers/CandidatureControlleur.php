@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\facades\Auth;
 use App\Models\Offre;
 use App\Models\Candidat;
-use App\Models\DossierDeCandidature;
+use App\Models\DossierCandidature;
+use Carbon\Carbon;
 class CandidatureControlleur extends Controller
 {
     /**
@@ -31,6 +32,26 @@ class CandidatureControlleur extends Controller
      */
     public function store(Request $request, Offre $offre)
     {
+        $request->validate([
+            'photo' => 'required|file|mimes:jpg,png',
+            'cv' => 'required|file|mimes:pdf',
+            'motivation' => 'required|file|mimes:pdf',
+            'date_naissance' => 'required|date',
+            'lieu_naissance' => 'required|string|max:100',
+            'nationalite' => 'required|string|max:100',
+            'sexe' => 'required|in:masculine,feminine',
+            'situation_matrimoniale' => 'required|in:Celibataire,Marie',
+        ]);
+        $candidat = Candidat::create($request->all());
+        $photoPath = $request->file('photo')->store('photos', 'public');
+        $cvPath = $request->file('cv')->store('cvs', 'public');
+        $motivationPath = $request->file('motivation')->store('motivations', 'public');
+        $dossier = DossierCandidature::create([
+            'id_offre' => $request->id,
+            'id_candidat' => $candidat->id,
+            'datedecreation' => Carbon::now(),
+        ]);
+        return  redirect()->back()->with('success','Votre candidature a ete recu avec success');
     }
 
     /**
