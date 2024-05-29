@@ -47,7 +47,7 @@
                         <h5 class="card-title">{{ $offre->libelle }}</h5>
                         <p class="card-text">{{ Str::limit($offre->description, 100, '...') }}</p>
                         <a href="{{route('Avis',$offre->id)}}" class="btn btn-primary">Avis de Recrutement</a>
-                        <a href="#" class="btn btn-success">Postuler</a>
+                        <a href="{{route('Postuler',$offre->id)}}" class="btn btn-success">Postuler</a>
                     </div>
                 </div>
             </div>

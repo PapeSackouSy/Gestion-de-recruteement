@@ -7,6 +7,7 @@ use App\Http\Controllers\DepartementControlleur;
 use App\Http\Controllers\OffreControlleur;
 use App\Http\Controllers\ProjetControlleurDRH;
 use App\Http\Controllers\PDFController;
+use App\Http\Controllers\CandidatureControlleur;
 Route::get('/', function () {
     return view('layout');
 })->name('layout');
@@ -46,4 +47,5 @@ Route::prefix('offre')->group(function () {
     Route::post('/{id}/Update',[OffreControlleur::class,'update'])->name('UpdateOffre');
     Route::get('/{id}/Supprimer',[OffreControlleur::class,'destroy'])->name('deleteOffre');
     Route::get('/Afficher',[OffreControlleur::class,'AfficherCandidature'])->name('candidature');
+    Route::get('{id}/postuler',[CandidatureControlleur::class,'index'])->name('Postuler');
 });

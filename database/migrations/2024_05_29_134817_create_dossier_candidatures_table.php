@@ -11,14 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('dossier_de_candidatures', function (Blueprint $table) {
+        Schema::create('dossier_candidatures', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('id_offre')->nullable();
+            $table->foreign('id_offre')->references('id')->on('offres')->onDelete('set null');
             $table->unsignedBigInteger('id_candidat')->nullable();
             $table->foreign('id_candidat')->references('id')->on('candidats')->onDelete('set null');
-            $table->unsignedBigInteger('id_Offre')->nullable();
-            $table->foreign('id_Offre')->references('id')->on('offres')->onDelete('set null');
+            $table->date('datedecreation');
             $table->timestamps();
         });
+
     }
 
     /**
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('dossier_de_candidatures');
+        Schema::dropIfExists('dossier_candidatures');
     }
 };
