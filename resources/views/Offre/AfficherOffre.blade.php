@@ -36,7 +36,7 @@
    <div class="container">
     <div class="row">
         @foreach ($offres as $offre)
-                @if($offre->Date_close=>{{{{ \Carbon\Carbon::now()->format('d-m-Y') }}}})
+                 @if(\Carbon\Carbon::parse($offre->Date_close) >= \Carbon\Carbon::now())
                     <div class="col-md-5 mb-4">
                         <div class="card">
                             @if($offre->photos)
