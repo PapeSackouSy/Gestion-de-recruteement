@@ -9,7 +9,7 @@
        @method('post')
        <div class="form-group">
         <label for="photos">Photos</label>
-        <input type="file" class="form-control" id="photos" name="photos" required>
+        <input type="file" class="form-control" id="photos" name="photos" >
       </div>
         <div class="form-group">
             <label for="libelle">Libelle</label>
@@ -54,10 +54,6 @@
             <label for="depot_candidature">Dépôt de Candidature</label>
             <textarea class="form-control" id="depot_candidature" name="depot_candidature" rows="2" >{{$offres->depot_candidature}}</textarea>
         </div>
-        <div class="form-group">
-            <label for="profils_competences">Photos</label>
-            <input type="file" class="form-control" id="photo" name="photo" value="{{$offres->photo}}">
-        </div>
         <div class="form-group mr-2">
             <label for="status" class="sr-only">Status</label>
             <select name="status" id="status" class="form-control" aria-describedby="textHelp">
@@ -81,7 +77,6 @@
             <p class="fs-5 mb-0 fw-bold">Vous pouvez </p><div>&numsp;&numsp;</div>
             <a class="text-primary fw-bold ms-2" href="{{route('dash')}}">Retourner</a>
           </div>
-
         </form>
 </div>
 @endsection

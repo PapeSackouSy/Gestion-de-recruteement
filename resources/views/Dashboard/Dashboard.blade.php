@@ -58,6 +58,12 @@
          </ul>
       </li>
       <li>
+        <a href="#drhaffiche" c class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i  class="ri-user-line"></i><span>Vice-Recteur</span></a>
+        <ul id="drhaffiche" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+            <li><a href="{{route('Viceafficher')}}"><i class="ri-file-list-line"></i>Ajouter DRH</a></li>
+         </ul>
+      </li>
+      <li>
         <a href="#extra-pages" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i class="ri-pantone-line"></i><span>Offre</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
         <ul id="extra-pages" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
            <li>
@@ -118,9 +124,47 @@
                     @include('Template2.NavbarAdmin')
                 @endif
             @endforeach
-@elseif (Auth::user()->role =="DRH")
-@foreach ($usecaseDRH as $user)
-    @if ($user->email == Auth::user()->email)
+            @elseif (Auth::user()->role =="DRH")
+                @foreach ($usecaseDRH as $user)
+                       @if ($user->email == Auth::user()->email)
+                                <li class="iq-menu-title"><i class="ri-subtract-line"></i><span>Home</span></li>
+                                <li class="active">
+                                    <a href="index.html" class="iq-waves-effect"><i class="ri-home-4-line"></i><span>Dashboard</i> </a>
+                                </li>
+                                            <li>
+                                                <a href="#extra-pages" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i class="ri-pantone-line"></i><span>Offre</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                                                <ul id="extra-pages" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                                                <li>
+                                                    <li><a href="{{route('listeOffre')}}"><i class="ri-file-list-line"></i>Lister Offres</a></li>
+                                                    <li><a href="{{route('AfficherOffres')}}" class="iq-waves-effect" aria-expanded="false"><i class="ri-chat-check-line"></i> <span>Definir Offres</span></a></li>
+                                                </li>
+                                                </ul>
+                                            </li>
+                                        </nav>
+                                        @include('Template2.NavbarAdmin')
+                        @endif
+                @endforeach
+                @elseif (Auth::user()->role =="Vice_Recteur")
+                @foreach ($usecaseVice as $user)
+                       @if ($user->email == Auth::user()->email)
+                                <li class="iq-menu-title"><i class="ri-subtract-line"></i><span>Home</span></li>
+                                <li class="active">
+                                    <a href="index.html" class="iq-waves-effect"><i class="ri-home-4-line"></i><span>Dashboard</i> </a>
+                                </li>
+                                            <li>
+                                                <a href="#extra-pages" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i class="ri-pantone-line"></i><span>Offre</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                                                <ul id="extra-pages" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                                                <li>
+                                                    <li><a href="{{route('listeOffre')}}"><i class="ri-file-list-line"></i>Lister Offres</a></li>
+                                                    <li><a href="{{route('AfficherOffres')}}" class="iq-waves-effect" aria-expanded="false"><i class="ri-chat-check-line"></i> <span>Definir Offres</span></a></li>
+                                                </li>
+                                                </ul>
+                                            </li>
+                                        </nav>
+                                        @include('Template2.NavbarAdmin')
+                        @endif
+                @endforeach
+                @elseif(Auth::user()->role =="Candidat")
                 <li class="iq-menu-title"><i class="ri-subtract-line"></i><span>Home</span></li>
                 <li class="active">
                     <a href="index.html" class="iq-waves-effect"><i class="ri-home-4-line"></i><span>Dashboard</i> </a>
@@ -129,15 +173,11 @@
                                 <a href="#extra-pages" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i class="ri-pantone-line"></i><span>Offre</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                                 <ul id="extra-pages" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
                                 <li>
-                                    <li><a href="{{route('listeOffre')}}"><i class="ri-file-list-line"></i>Lister Offres</a></li>
-                                    <li><a href="{{route('AfficherOffres')}}" class="iq-waves-effect" aria-expanded="false"><i class="ri-chat-check-line"></i> <span>Definir Offres</span></a></li>
+                                    <li><a href="{{route('candidature')}}"><i class="ri-file-list-line"></i>Voire Offres</a></li>
                                 </li>
                                 </ul>
                             </li>
                         </nav>
-                        @include('Template2.NavbarAdmin')
-                    @endif
-                @endforeach
             @endif
         @endauth
     </div>

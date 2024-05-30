@@ -43,6 +43,10 @@ Route::prefix('DRH')->group(function(){
     Route::get('/Afficher',[ProjetControlleurDRH::class,'AfficherDRH'])->name('drhafficher');
     Route::post('/Ajouter',[ProjetControlleurDRH::class,'store'])->name('AjouterDRH');
 });
+Route::prefix('ViceRecteur')->group(function(){
+    Route::get('/Afficher',[ProjetControlleurDRH::class,'AfficherVice'])->name('Viceafficher');
+    Route::post('/Ajouter',[ProjetControlleurDRH::class,'storeVice'])->name('AjouterVice');
+});
 Route::prefix('offre')->group(function () {
     Route::get('/Afficherformulaire', [OffreControlleur::class,'index'])->name('AfficherOffres');
     Route::post('/Ajouter',[OffreControlleur::class,'store'])->name('AjouterOffre');

@@ -13,6 +13,13 @@
                   <img src="{{asset('Auth/assets/img/logo uabd.jpg')}}" width="180"  alt="">
                 </a>
                 <p class="text-center text-primary mb-8"></p>
+                @if ($errors->Any())
+                        @foreach ($errors->all() as $erreur )
+                        <div class="alert alert-danger">
+                               {{$erreur}}
+                        </div>
+                        @endforeach
+                @endif
                 <form method="post" action="{{route('registerApp')}}">
                     @csrf
                     @method('post')

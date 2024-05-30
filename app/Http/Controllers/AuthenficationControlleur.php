@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Ufr;
 use App\Models\Departement;
 use App\Models\DRH;
+use App\Models\ViceRecteur;
 class AuthenficationControlleur extends Controller
 {
 
@@ -22,7 +23,8 @@ class AuthenficationControlleur extends Controller
         $usecase=ufr::all();
         $usecaseDep=Departement::all();
         $usecaseDRH=DRH::all();
-        return view('Dashboard.Dashboard',compact('usecase','usecaseDep','usecaseDRH'));
+        $usecaseVice=ViceRecteur::all();
+        return view('Dashboard.Dashboard',compact('usecase','usecaseDep','usecaseDRH','usecaseVice'));
     }
     public function VueUFR()
     {
