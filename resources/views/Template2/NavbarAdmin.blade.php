@@ -185,7 +185,5 @@
            </ul>
         </div>
         @include('Template2.UserProfile')
-     </nav>
 
-</div>
-</div>
+

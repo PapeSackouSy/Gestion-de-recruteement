@@ -1,42 +1,11 @@
 @extends('Template.Dashboardtemp')
 @section('name-containt2')
-<div class="wrapper">
-    <div class="iq-sidebar">
-       <div class="iq-sidebar-logo d-flex justify-content-between">
-          <a href="{{route('layout')}}">
-          <div class="iq-light-logo">
-             <div class="iq-light-logo">
-                <img src="{{asset('Auth/assets/img/logo uabd.jpg')}}" class="img-fluid" alt="">
-              </div>
-                <div class="iq-dark-logo">
-                   <img src="{{asset('Auth/assets/img/logo uabd.jpg')}}" class="img-fluid" alt="">
-                </div>
-          </div>
-          <div class="iq-dark-logo">
-             <img src="{{asset('Auth/assets/img/logo uabd.jpg')}}" class="img-fluid" alt="">
-          </div>
-          <span>UADB</span>
-          </a>
-          <div class="iq-menu-bt-sidebar">
-             <div class="iq-menu-bt align-self-center">
-                <div class="wrapper-menu">
-                   <div class="main-circle"><i class="ri-arrow-left-s-line"></i></div>
-                   <div class="hover-circle"><i class="ri-arrow-right-s-line"></i></div>
-                </div>
-             </div>
-          </div>
-       </div>
-       <div id="sidebar-scrollbar">
-  <nav class="iq-sidebar-menu">
-    <ul id="iq-sidebar-toggle" class="iq-menu">
+@include('Dashboard.TempDash2')
         @auth
         @if (Auth::user()->role=="administrateur")
-       <li class="iq-menu-title"><i class="ri-subtract-line"></i><span>Home</span></li>
-       <li class="active">
-          <a href="index.html" class="iq-waves-effect"><i class="ri-home-4-line"></i><span>Dashboard</span></a>
+          <a href="{{route('sta')}}" class="iq-waves-effect"><i class="ri-home-4-line"></i><span>Dashboard</span></a>
        </li>
        <li class="iq-menu-title"><i class="ri-subtract-line"></i><span>Apps</span></li>
-
        <li><a href="todo.html" class="iq-waves-effect" aria-expanded="false"><i class="ri-chat-check-line"></i><span>Todo</span></a></li>
        <li>
           <a href="#userinfo" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i class="ri-user-line"></i><span>User</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
@@ -88,12 +57,9 @@
        </li>
     </ul>
             @include('Template2.NavbarAdmin')
-            @include('Template2.Statistic')
 @elseif (Auth::user()->role == "Directeur_UFR" )
             @foreach ($usecase as $user)
                     @if ($user->responsable_ufr_id == Auth::user()->id)
-        <li class="iq-menu-title"><i class="ri-subtract-line"></i><span>Home</span></li>
-        <li class="active">
            <a href="index.html" class="iq-waves-effect"><i class="ri-home-4-line"></i><span>Dashboard</span></a>
         </li>
         <li class="iq-menu-title"><i class="ri-subtract-line"></i><span>Apps</span></li>
@@ -114,8 +80,6 @@
 @elseif (Auth::user()->role == "responsable_departement" )
             @foreach ($usecaseDep as $user)
                 @if ($user->responsable_departement_id == Auth::user()->id)
-                            <li class="iq-menu-title"><i class="ri-subtract-line"></i><span>Home</span></li>
-                            <li class="active">
                                 <a href="index.html" class="iq-waves-effect"><i class="ri-home-4-line"></i><span>Dashboard</i> </a>
                             </li>
                             <li class="iq-menu-title"><i class="ri-subtract-line"></i><span>Apps</span></li>
@@ -127,8 +91,6 @@
             @elseif (Auth::user()->role =="DRH")
                 @foreach ($usecaseDRH as $user)
                        @if ($user->email == Auth::user()->email)
-                                <li class="iq-menu-title"><i class="ri-subtract-line"></i><span>Home</span></li>
-                                <li class="active">
                                     <a href="index.html" class="iq-waves-effect"><i class="ri-home-4-line"></i><span>Dashboard</i> </a>
                                 </li>
                                             <li>
@@ -147,8 +109,6 @@
                 @elseif (Auth::user()->role =="Vice_Recteur")
                 @foreach ($usecaseVice as $user)
                        @if ($user->email == Auth::user()->email)
-                                <li class="iq-menu-title"><i class="ri-subtract-line"></i><span>Home</span></li>
-                                <li class="active">
                                     <a href="index.html" class="iq-waves-effect"><i class="ri-home-4-line"></i><span>Dashboard</i> </a>
                                 </li>
                                             <li>
@@ -165,8 +125,6 @@
                         @endif
                 @endforeach
                 @elseif(Auth::user()->role =="Candidat")
-                <li class="iq-menu-title"><i class="ri-subtract-line"></i><span>Home</span></li>
-                <li class="active">
                     <a href="index.html" class="iq-waves-effect"><i class="ri-home-4-line"></i><span>Dashboard</i> </a>
                 </li>
                             <li>

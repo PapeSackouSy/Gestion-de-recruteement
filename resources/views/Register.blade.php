@@ -55,6 +55,7 @@
                           <option value="Directeur_UFR">Directeur D'UFR</option>
                           <option value="responsable_departement">responsable_departement</option>
                           <option value="Candidat">Candidat</option>
+                          <option value="Autre">Autre</option>
                     </select>
                   </div>
                   <div class="mb-2">

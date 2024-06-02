@@ -11,6 +11,9 @@ use App\Http\Controllers\CandidatureControlleur;
 Route::get('/', function () {
     return view('layout');
 })->name('layout');
+Route::get('/statistique', function () {
+    return view('Template2.Statistic');
+})->name('sta');
 
 Route::get('/login',[AuthenficationControlleur::class,'LoginAfficher'])->name('login');
 Route::get('/register',[AuthenficationControlleur::class,'RegisterAfficher'])->name('register');

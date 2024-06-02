@@ -24,8 +24,7 @@
    <body class="sidebar-main-active right-column-fixed header-top-bgcolor">
     @yield('name-containt2')
    <script src="{{asset('Auth/Asset2/js/jquery.min.js')}}"></script>
-   <script src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script>
-   <script src="{{asset('Auth/Asset2/js/popper.min.js')}}"></script>
+    <script src="{{asset('Auth/Asset2/js/popper.min.js')}}"></script>
    <script src="{{asset('Auth/Asset2/js/bootstrap.min.js')}}"></script>
    <!-- Appear JavaScript -->
    <script src="{{asset('Auth/Asset2/js/jquery.appear.js')}}"></script>

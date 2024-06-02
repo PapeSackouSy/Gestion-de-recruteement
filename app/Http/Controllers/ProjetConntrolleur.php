@@ -91,8 +91,9 @@ class ProjetConntrolleur extends Controller
             }
             public function AfficherUSERS()
             {
-                $user=User::all();
-                return view('Users.AfficherUsers',compact('user'));
+                $users=User::all();
+                $userpa = User::paginate(7);
+                return view('Users.AfficherUsers',compact('users','userpa'));
             }
             public function EditerUser($id)
             {
