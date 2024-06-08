@@ -12,7 +12,7 @@ data-sidebar-position="fixed" data-header-position="fixed">
                     {{session('success')}}
                 </div>
                 @endif
-                    <h2>Liste Offres</h2>
+                    <h2>Liste Avis  Pers</h2>
                     <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Rechercher">
                      <table id="dataTable">
                                 <thead>
@@ -22,13 +22,13 @@ data-sidebar-position="fixed" data-header-position="fixed">
                                     </tr>
                                 </thead>
                                  <tbody>
-                                            @foreach ($offres as $offre)
+                                            @foreach ($avis as $offre)
                                                 <tr>
-                                                    <td>{{ $offre->libelle }}</td>
+                                                    <td>{{Str::limit($offre->depot_candidature, 100, '...')}}</td>
                                                     <td>
-                                                        <a href="{{route('EditerOffre',$offre->id)}}" class="btn btn-primary">Edit</a>
-                                                        <a href="{{route('deleteOffre',$offre->id)}}" class="btn btn-danger">Delete</button>
-                                                        <a href="{{route('Avis', $offre->id)}}" class="btn btn-success">Voir Tous</a>
+                                                        <a href="#" class="btn btn-primary">Edit</a>
+                                                        <a href="#" class="btn btn-danger">Delete</button>
+                                                        <a href="{{route('affichierPub',$offre->id)}}" class="btn btn-success">Publier</a>
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -41,7 +41,6 @@ data-sidebar-position="fixed" data-header-position="fixed">
         </div>
     </div>
 </div>
-
 </div>
 </div>
 

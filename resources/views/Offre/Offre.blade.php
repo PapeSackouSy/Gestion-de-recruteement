@@ -1,6 +1,12 @@
-@extends('Offre.TempOffre')
-@section('container3')
-<div class="container">
+@include('Dashboard.Dashboard')
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+data-sidebar-position="fixed" data-header-position="fixed">
+<div class="position-relative overflow-hidden radial-gradient min-vh-100 d-flex flex-column">
+  <div class="d-flex align-items-center justify-content-center flex-grow-1">
+    <div class="row justify-content-center w-100">
+      <div class="col-md-4 col-lg-4 col-xxl-4 mt-6 " style="margin-top: 150px;">
+        <div class="card mb-2">
+          <div class="card-body">
     <a href="#" class="text-nowrap logo-img text-center d-block py-3 w-100">
         <img src="{{asset('Auth/assets/img/logo uabd.jpg')}}" width="170"  alt="">
       </a>
@@ -80,5 +86,10 @@
           </div>
         </form>
 </div>
-@endsection
+</div>
+</div>
+</div>
+</div>
+</div>
+
 

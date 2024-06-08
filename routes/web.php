@@ -8,6 +8,8 @@ use App\Http\Controllers\OffreControlleur;
 use App\Http\Controllers\ProjetControlleurDRH;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\CandidatureControlleur;
+use App\Http\Controllers\OffrePersControlleur;
+use App\Http\Controllers\AvisControlleur;
 Route::get('/', function () {
     return view('layout');
 })->name('layout');
@@ -62,6 +64,15 @@ Route::prefix('offre')->group(function () {
     Route::get('{id}/postuler',[CandidatureControlleur::class,'index'])->name('Postuler');
     Route::post('{id}/postuler',[CandidatureControlleur::class,'store'])->name('AjouterPostuler');
 });
-
-
+    Route::prefix('OffresPers')->group(function(){
+      Route::get('/Affiche',[OffrePersControlleur::class,'index'])->name('indexPers');
+      Route::post('/Ajouter',[OffrePersControlleur::class,'store'])->name('storePergs');
+      Route::get('/AfficherOffre',[OffrePersControlleur::class,'show'])->name('listeOffresPers');
+      Route::get('/{id}/Afficher',[OffrePersControlleur::class,'publish'])->name('affichierPub');
+    });
+    Route::prefix('Avis')->group(function(){
+      Route::get('/{id}/Afficher',[AvisControlleur::class,'index'])->name('avis');
+      Route::post('/{id}/AJouter',[AvisControlleur::class,'store'])->name('storeAvis');
+      Route::get('/listerAvis',[AvisControlleur::class,'show'])->name('listeAvis');
+    });
 });

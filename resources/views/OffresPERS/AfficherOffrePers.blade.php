@@ -12,7 +12,7 @@ data-sidebar-position="fixed" data-header-position="fixed">
                     {{session('success')}}
                 </div>
                 @endif
-                    <h2>Liste Offres</h2>
+                    <h2>Liste Offres Pers</h2>
                     <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Rechercher">
                      <table id="dataTable">
                                 <thead>
@@ -22,13 +22,13 @@ data-sidebar-position="fixed" data-header-position="fixed">
                                     </tr>
                                 </thead>
                                  <tbody>
-                                            @foreach ($offres as $offre)
+                                            @foreach ($offresPers as $offre)
                                                 <tr>
-                                                    <td>{{ $offre->libelle }}</td>
+                                                    <td>{{ $offre->Titre }}</td>
                                                     <td>
-                                                        <a href="{{route('EditerOffre',$offre->id)}}" class="btn btn-primary">Edit</a>
-                                                        <a href="{{route('deleteOffre',$offre->id)}}" class="btn btn-danger">Delete</button>
-                                                        <a href="{{route('Avis', $offre->id)}}" class="btn btn-success">Voir Tous</a>
+                                                        <a href="#" class="btn btn-primary">Edit</a>
+                                                        <a href="#" class="btn btn-danger">Delete</button>
+                                                        <a href="{{route('avis',$offre->id)}}" class="btn btn-success">Definir Avis </a>
                                                     </td>
                                                 </tr>
                                             @endforeach

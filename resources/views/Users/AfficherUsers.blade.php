@@ -5,16 +5,15 @@
       class="position-relative overflow-hidden radial-gradient min-vh-100 d-flex align-items-center justify-content-center">
       <div class="d-flex align-items-center justify-content-center w-100">
         <div class="row justify-content-center w-100">
-<div class="container mt-5"> <!-- Ajouter un espace en haut de la container -->
+<div class="container mt-5">
     @if(session('success'))
     <div class="alert alert-success">
         {{ session('success') }}
     </div>
     @endif
-
     <h3>Liste Utilisateur</h3>
-    <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Rechercher" class="mb-3"> <!-- Ajouter un espace en bas de l'input -->
-    <table id="dataTable" class="table table-striped"> <!-- Ajouter des classes pour un meilleur style -->
+    <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Rechercher" class="mb-3">
+    <table id="dataTable" class="table table-striped">
         <thead>
             <tr>
                 <th>ID</th>
@@ -51,8 +50,6 @@
             @endforeach
         </tbody>
     </table>
-    <div class="pagination">
-        {{$userpa->links()}}
-    </div>
+
 </div>
 </div><div></div></div>

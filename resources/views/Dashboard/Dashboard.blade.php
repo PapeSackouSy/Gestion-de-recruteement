@@ -83,7 +83,7 @@
                                 <a href="index.html" class="iq-waves-effect"><i class="ri-home-4-line"></i><span>Dashboard</i> </a>
                             </li>
                             <li class="iq-menu-title"><i class="ri-subtract-line"></i><span>Apps</span></li>
-                            <li><a href="{{route('AfficherOffres')}}" class="iq-waves-effect" aria-expanded="false"><i class="ri-chat-check-line"></i> <span>Definir Offres</span></a></li>
+                            <li><a href="{{route('indexPers')}}" class="iq-waves-effect" aria-expanded="false"><i class="ri-chat-check-line"></i> <span>Definir Offres</span></a></li>
                       </nav>
                     @include('Template2.NavbarAdmin')
                 @endif
@@ -92,13 +92,22 @@
                 @foreach ($usecaseDRH as $user)
                        @if ($user->email == Auth::user()->email)
                                     <a href="index.html" class="iq-waves-effect"><i class="ri-home-4-line"></i><span>Dashboard</i> </a>
-                                </li>
+                                          </li>
                                             <li>
                                                 <a href="#extra-pages" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i class="ri-pantone-line"></i><span>Offre</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                                                 <ul id="extra-pages" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
                                                 <li>
                                                     <li><a href="{{route('listeOffre')}}"><i class="ri-file-list-line"></i>Lister Offres</a></li>
-                                                    <li><a href="{{route('AfficherOffres')}}" class="iq-waves-effect" aria-expanded="false"><i class="ri-chat-check-line"></i> <span>Definir Offres</span></a></li>
+                                                    <li><a href="{{route('AfficherOffres')}}" class="iq-waves-effect" aria-expanded="false"><i class="ri-file-list-line"></i> <span>Definir Offres</span></a></li>
+                                                    <li><a href="{{route('listeOffresPers')}}" class="iq-waves-effect" aria-expanded="false"><i class="ri-file-list-line"></i><span>Liste Offres Pers</span></a></li>
+                                                </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="#extra-pages" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i class="ri-pantone-line"></i><span>Avis de recrutement</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                                                <ul id="extra-pages" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                                                <li>
+                                                    <li><a href="{{route('listeAvis')}}"><i class="ri-file-list-line"></i>Lister Avis</a></li>
                                                 </li>
                                                 </ul>
                                             </li>

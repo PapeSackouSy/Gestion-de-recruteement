@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Offre;
+use App\Models\DRH;
 use PDF;
 class OffreControlleur extends Controller
 {
 
     public function index()
     {
-        return view('Offre.Offre');
+        $usecaseDRH=DRH::all();
+        return view('Offre.Offre',compact('usecaseDRH'));
     }
 
     public function create()
@@ -66,7 +68,8 @@ class OffreControlleur extends Controller
     public function show()
     {
         $offres = Offre::all();
-        return view('Offre.ListerOffre', compact('offres'));
+        $usecaseDRH=DRH::all();
+        return view('Offre.ListerOffre', compact('offres','usecaseDRH'));
     }
     /**
      * Show the form for editing the specified resource.
@@ -142,6 +145,7 @@ class OffreControlleur extends Controller
     public function AfficherCandidature()
     {
         $offres=Offre::all();
+
         return view('Offre.AfficherOffre',compact('offres'));
     }
 }
