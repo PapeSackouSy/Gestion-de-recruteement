@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Appel à Candidatures - Université Alioune Diop de Bambey</title>
+    <title>Dedails sur le Poste - Université Alioune Diop de Bambey</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -22,6 +22,9 @@
         .content h2 {
             text-decoration: underline;
         }
+        h2{
+            text-align: center;
+        }
         span {
             color: rgb(29, 77, 200);
         }
@@ -36,7 +39,7 @@
             height: auto;
         }
         .pos{
-            color:blue;
+            color:black;
         }
     </style>
 </head>
@@ -53,28 +56,22 @@
     </div>
 
     <div class="content">
-        <h1>AVIS DE RECRUTEMENT</h1>
-        <p>{{ $offre->libelle }}</p>
+        <h1>Details</h1>
+        <p>{{ $offre->Titre }}</p>
         <h2>PROFIL DU POSTE :</h2>
-        <p>{{ $offre->profil_poste }}</p>
+        <p>{{ $offre->Profil }}</p>
 
         <h2>DIPLOMES REQUIS :</h2>
-        <p>{{ $offre->diplomes_requis }}</p>
+        <p>{{ $offre->Exigence }}</p>
 
         <h2>EXPERIENCE PROFESSIONNELLE :</h2>
-        <p>{{ $offre->experience_professionnelle }}</p>
+        <p>{{ $offre->Experience }}</p>
 
         <h2>DETAILS :</h2>
-        <p>{{ $offre->details }}</p>
+        <p>{{ $offre->Details }}</p>
 
         <h2>DESCRIPTION DU POSTE :</h2>
-        <p>{{ $offre->description }}</p>
-
-        <h2>COMPOSITION DU DOSSIER DE CANDIDATURE :</h2>
-        <p>{{ $offre->profils_competences }}</p>
-
-        <h2>DEPOT DE CANDIDATURE :</h2>
-        <p>{{ $offre->composition_dossier }}</p>
+        <p>{{ $offre->Description }}</p>
     </div>
 
     <div class="footer">

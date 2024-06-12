@@ -84,7 +84,8 @@
                             </li>
                             <li class="iq-menu-title"><i class="ri-subtract-line"></i><span>Apps</span></li>
                             <li><a href="{{route('indexPers')}}" class="iq-waves-effect" aria-expanded="false"><i class="ri-chat-check-line"></i> <span>Definir Offres</span></a></li>
-                      </nav>
+                            <li><a href="{{route('listerROffres')}}" class="iq-waves-effect" aria-expanded="false"><i class="ri-chat-check-line"></i> <span>Lister Offres</span></a></li>
+                        </nav>
                     @include('Template2.NavbarAdmin')
                 @endif
             @endforeach

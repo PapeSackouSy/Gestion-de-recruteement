@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Offre;
 use App\Models\DRH;
+use App\Models\OffresPers;
 use PDF;
 class OffreControlleur extends Controller
 {
@@ -145,7 +146,7 @@ class OffreControlleur extends Controller
     public function AfficherCandidature()
     {
         $offres=Offre::all();
-
-        return view('Offre.AfficherOffre',compact('offres'));
+        $offrespers = OffresPers::where('is_published', true)->get();
+        return view('Offre.AfficherOffre',compact('offres','offrespers'));
     }
 }

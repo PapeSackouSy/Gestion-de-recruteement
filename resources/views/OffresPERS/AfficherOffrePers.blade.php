@@ -23,14 +23,16 @@ data-sidebar-position="fixed" data-header-position="fixed">
                                 </thead>
                                  <tbody>
                                             @foreach ($offresPers as $offre)
-                                                <tr>
-                                                    <td>{{ $offre->Titre }}</td>
-                                                    <td>
-                                                        <a href="#" class="btn btn-primary">Edit</a>
-                                                        <a href="#" class="btn btn-danger">Delete</button>
-                                                        <a href="{{route('avis',$offre->id)}}" class="btn btn-success">Definir Avis </a>
-                                                    </td>
-                                                </tr>
+
+                                                        <tr>
+                                                            <td>{{ $offre->Titre }}</td>
+                                                            <td>
+                                                                <a href="{{route('editerOffrePers',$offre->id)}}" class="btn btn-primary">details</a>
+                                                                <a href="{{route('avis',$offre->id)}}" class="btn btn-success">Definir Avis </a>
+                                                            </td>
+                                                        </tr>
+
+
                                             @endforeach
                                 </tbody>
                             </table>

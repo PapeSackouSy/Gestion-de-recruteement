@@ -69,10 +69,16 @@ Route::prefix('offre')->group(function () {
       Route::post('/Ajouter',[OffrePersControlleur::class,'store'])->name('storePergs');
       Route::get('/AfficherOffre',[OffrePersControlleur::class,'show'])->name('listeOffresPers');
       Route::get('/{id}/Afficher',[OffrePersControlleur::class,'publish'])->name('affichierPub');
+      Route::get('/{id}/editer',[OffrePersControlleur::class,'edit'])->name('editerOffrePers');
+      Route::get('/listerOffres',[OffrePersControlleur::class,'create'])->name('listerROffres');
     });
+    Route::get('/publier/Afficher',[OffrePersControlleur::class,'indexp'])->name('affichieroffrepub');
     Route::prefix('Avis')->group(function(){
       Route::get('/{id}/Afficher',[AvisControlleur::class,'index'])->name('avis');
       Route::post('/{id}/AJouter',[AvisControlleur::class,'store'])->name('storeAvis');
       Route::get('/listerAvis',[AvisControlleur::class,'show'])->name('listeAvis');
+      Route::get('/{id}/Editer',[AvisControlleur::class,'edit'])->name('editer');
+      Route::put('/{id}/update',[AvisControlleur::class,'update'])->name('updateAvis');
+      Route::get('/{id}/delete',[AvisControlleur::class,'destroy'])->name('deleterAvis');
     });
 });
