@@ -35,7 +35,7 @@ class CandidatureControlleur extends Controller
     {
         // Validate the request inputs
         $request->validate([
-            'photo' => 'required|file|mimes:jpg,png',
+            'photo' => 'nullable|file|mimes:jpg,png',
             'cv' => 'required|file|mimes:pdf',
             'motivation' => 'required|file|mimes:pdf',
             'date_naissance' => 'required|date',

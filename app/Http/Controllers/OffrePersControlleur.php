@@ -107,46 +107,54 @@ class OffrePersControlleur extends Controller
     {
         $offresPers=OffresPers::find($id);
         $usecaseDep=Departement::all();
-        return view('OffresPERS.AfficherOffrePers',compact('offresPers','usecaseDep'));
+        return view('OffresPERS.editer',compact('offresPers','usecaseDep'));
     }
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request)
-    {
+    public function updateOffrePers(Request $request, $id)
+{
+        // Trouver l'enregistrement spécifique par son ID
+        $offresPers = OffresPers::find($id);
 
-        $validatedData = $request->validate([
-            'photos' => 'nullable|file|mimes:jpg,png',
-            'Titre' => 'required|string',
-            'Profil' => 'required|string',
-            'Exigence' => 'required|string',
-            'Experience' => 'required|string',
-            'Details' => 'required|string',
-            'Description' => 'required|string|max:12345',
-        ]);
+        if (!$offresPers) {
+            return redirect()->back()->with('error', 'Offre personnelle non trouvée!');
+        }
+        // Gérer le téléchargement du fichier photo seulement s'il est présent
+        if ($request->hasFile('photos')) {
+            $photo = $request->file('photos');
+            $photoPath = $photo->store('photosOFfresPers', 'public');
 
-        $userId = Auth::id();
-        $departement = Departement::where('responsable_departement_id', $userId)->first();
-        $idDepartement = $departement->id;
-        $photoPath = $request->file('photos')->store('photosOFfresPers', 'public');
-        $offresPers = OffresPers::find($request->id);
-        $offresPers->photos=$photoPath;
-        $offresPers->Titre = $validatedData['Titre'];
-        $offresPers->Profil = $validatedData['Profil'];
-        $offresPers->Exigence = $validatedData['Exigence'];
-        $offresPers->Experience = $validatedData['Experience'];
-        $offresPers->Details = $validatedData['Details'];
-        $offresPers->Description = $validatedData['Description'];
-        $offresPers->departement_id=$idDepartement ;
-        $offresPers->save();
-       return redirect()->route('listerROffres')->with('success', 'Offre modifier avec succès!');
-    }
+            // Supprimer l'ancienne photo si elle existe
+                    if ($offresPers->photos) {
+                        $oldPhotoPath = public_path('storage/' . $offresPers->photos);
+                        if (file_exists($oldPhotoPath)) {
+                            unlink($oldPhotoPath);
+                        }
+                    }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
+                // Mettre à jour le chemin de la nouvelle photo
+                $offresPers->photos = $photoPath;
+            }
+
+
+            $offresPers->Titre = $request->Titre;
+            $offresPers->Profil = $request->Profil;
+            $offresPers->Exigence = $request->Exigence;
+            $offresPers->Experience = $request->Experience;
+            $offresPers->Details =$request->Details;
+            $offresPers->Description =$request->Description;
+
+            // Sauvegarder les modifications dans la base de données
+            $offresPers->save();
+
+            // Rediriger avec un message de succès
+            return redirect()->route('listerROffres')->with('success', 'Offre personnelle mise à jour avec succès!');
+}
+
+
+
+        public function destroy($id)
+        {
+               $offresPers = OffresPers::find($id);
+               $offresPers->delete();
+               return redirect()->route('listerROffres')->with('success', 'Offre Offre a ete supprimer avec success');
+        }
 }

@@ -71,6 +71,9 @@ Route::prefix('offre')->group(function () {
       Route::get('/{id}/Afficher',[OffrePersControlleur::class,'publish'])->name('affichierPub');
       Route::get('/{id}/editer',[OffrePersControlleur::class,'edit'])->name('editerOffrePers');
       Route::get('/listerOffres',[OffrePersControlleur::class,'create'])->name('listerROffres');
+      Route::get('/{id}/editerPers',[OffrePersControlleur::class,'showEditer'])->name('showEditer');
+      Route::put('/{id}/update',[OffrePersControlleur::class,'updateOffrePers'])->name('voirupdate');
+      Route::get('/{id}/delete',[OffrePersControlleur::class,'destroy'])->name('deleterOffrepers');
     });
     Route::get('/publier/Afficher',[OffrePersControlleur::class,'indexp'])->name('affichieroffrepub');
     Route::prefix('Avis')->group(function(){

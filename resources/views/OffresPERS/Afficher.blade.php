@@ -27,8 +27,8 @@ data-sidebar-position="fixed" data-header-position="fixed">
                                                         <tr>
                                                             <td>{{ $offre->Titre }}</td>
                                                             <td>
-                                                                <a href="#" class="btn btn-primary">editer</a>
-                                                                <a href="#" class="btn btn-danger">supprimer</a>
+                                                                <a href="{{route('showEditer', $offre->id)}}" class="btn btn-primary">editer</a>
+                                                                <a href="{{route('deleterOffrepers', $offre->id)}}" class="btn btn-danger">supprimer</a>
                                                             </td>
                                                         </tr>
 

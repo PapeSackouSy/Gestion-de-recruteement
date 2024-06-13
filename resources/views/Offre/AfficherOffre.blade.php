@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Offres</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{asset('Auth/assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
     <style>
         .content-section {
             display: none;
@@ -73,7 +73,8 @@
             </div>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="{{asset('Auth/assets/libs/jquery/dist/jquery.min.js')}}"></script>
     <script>
         $(document).ready(function() {
             $('#offres-per-button').on('click', function() {

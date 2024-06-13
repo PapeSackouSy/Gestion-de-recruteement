@@ -7,7 +7,7 @@ data-sidebar-position="fixed" data-header-position="fixed">
       <div class="col-md-4 col-lg-4 col-xxl-4 mt-6 " style="margin-top: 150px;">
         <div class="card mb-2">
           <div class="card-body">
-            <a href="{{route('layout')}}" class="text-nowrap logo-img text-center d-block py-3 w-100">
+            <a href="#" class="text-nowrap logo-img text-center d-block py-3 w-100">
               <img src="{{asset('Auth/assets/img/logo uabd.jpg')}}" width="180"  alt="">
             </a>
             <p class="text-center text-primary mb-8"></p>
@@ -21,28 +21,28 @@ data-sidebar-position="fixed" data-header-position="fixed">
                 {{session('success')}}
             </div>
             @endif
-            <form method="post" action="#" enctype="multipart/form-data">
+            <form  method="post" action="{{route('voirupdate',$offresPers->id)}}" enctype="multipart/form-data">
                 @csrf
-                @method('post')
+                @method('put')
                 <div class="mb-2">
                     <label for="photos" class="form-label">PHOTOS :</label>
-                    <input type="file" class="form-control" id="photos" name="photos" name="{{$offresPers->photos}}">
+                    <input type="file" class="form-control" id="photos" name="photos" value="{{$offresPers->photos}}">
                 </div>
-              <div class="mb-2">
+               <div class="mb-2">
                 <label for="libelle" class="form-label">Titre</label>
-                <input type="text" class="form-control" id="titre" name="Titre" name="{{$offresPers->Titre}}" required>
-            </div>
+                <input type="text" class="form-control" id="titre" name="Titre" value="{{$offresPers->Titre}}" required>
+               </div>
               <div class="mb-2">
                 <label for="profil_poste" class="form-label">Profil du Poste</label>
-                <input type="text" class="form-control" id="profil_poste" name="Profil" name="{{$offresPers->Profil}}" required>
+                <input type="text" class="form-control" id="profil_poste" name="Profil" value="{{$offresPers->Profil}}" required>
               </div>
               <div class="mb-2">
                 <label for="exigence" class="form-label">Diplômes Requis</label>
-                <input type="text" class="form-control" id="exigence" name="Exigence"  name="{{$offresPers->Exigence}}" required>
+                <input type="text" class="form-control" id="exigence" name="Exigence"  value="{{$offresPers->Exigence}}" required>
               </div>
               <div class="mb-2">
                 <label for="experience_professionnelle" class="form-label">Expérience Professionnelle</label>
-                <input type="text" class="form-control" id="experience_professionnelle" name="Experience" name="{{$offresPers->Experience}}" required>
+                <input type="text" class="form-control" id="experience_professionnelle" name="Experience" value="{{$offresPers->Experience}}" required>
               </div>
               <div class="mb-2">
                 <label for="details" class="form-label">Détails</label>
@@ -57,10 +57,10 @@ data-sidebar-position="fixed" data-header-position="fixed">
                 <button  type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Modifier</a>
               </div>
             </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
 </div>
