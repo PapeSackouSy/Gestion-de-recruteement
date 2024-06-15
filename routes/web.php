@@ -10,6 +10,7 @@ use App\Http\Controllers\PDFController;
 use App\Http\Controllers\CandidatureControlleur;
 use App\Http\Controllers\OffrePersControlleur;
 use App\Http\Controllers\AvisControlleur;
+use App\Http\Controllers\PersonnelControlleur;
 Route::get('/', function () {
     return view('layout');
 })->name('layout');
@@ -74,6 +75,7 @@ Route::prefix('offre')->group(function () {
       Route::get('/{id}/editerPers',[OffrePersControlleur::class,'showEditer'])->name('showEditer');
       Route::put('/{id}/update',[OffrePersControlleur::class,'updateOffrePers'])->name('voirupdate');
       Route::get('/{id}/delete',[OffrePersControlleur::class,'destroy'])->name('deleterOffrepers');
+      Route::get('/{id}/Avis',[PDFController::class,'GeneAvis'])->name('AvisPers');
     });
     Route::get('/publier/Afficher',[OffrePersControlleur::class,'indexp'])->name('affichieroffrepub');
     Route::prefix('Avis')->group(function(){
@@ -84,4 +86,8 @@ Route::prefix('offre')->group(function () {
       Route::put('/{id}/update',[AvisControlleur::class,'update'])->name('updateAvis');
       Route::get('/{id}/delete',[AvisControlleur::class,'destroy'])->name('deleterAvis');
     });
+    Route::prefix('Personnel')->group(function(){
+        Route::get('/{id}/postuler',[PersonnelControlleur::class,'Afficher'])->name('postulerPers');
+        Route::post('/{id}/ajouter',[PersonnelControlleur::class,'store'])->name('postulerPersA');
+      });
 });

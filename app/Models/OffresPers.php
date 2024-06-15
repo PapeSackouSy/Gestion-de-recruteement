@@ -27,4 +27,8 @@ class OffresPers extends Model
     {
         return $this->hasMany(Avis::class, 'id');
 }
+public function dossiersDeCandidature()
+{
+    return $this->hasMany(DossierDeCandaturePers::class);
+}
 }
