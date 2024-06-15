@@ -10,7 +10,9 @@ use App\Models\Experience;
 use App\Models\candidaturePers;
 use App\Models\DossierDeCandaturePers;
 use App\Models\OffresPers;
+use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use Illuminate\Support\facades\Auth;
 class PersonnelControlleur extends Controller
 {
     public function Afficher($id)
@@ -57,6 +59,16 @@ class PersonnelControlleur extends Controller
         $cvPath = $request->file('cv')->store('cvs');
         $lettrePath = $request->file('lettre')->store('lettres');
         $thesePath = $request->file('these')->store('theses');
+        $userEmail = Auth::user()->email;
+        $existingApplication = DB::table('dossier_de_candature_pers')
+        ->join('candidature_pers', 'dossier_de_candature_pers.candidatures_id', '=', 'candidature_pers.id')
+        ->where('candidature_pers.email', $userEmail)
+        ->where('dossier_de_candature_pers.offre_id', $request->id)
+        ->exists();
+
+    if ($existingApplication) {
+        return redirect()->back()->with('error', 'Vous avez déjà postulé pour cette offre.');
+    }
 
         // // Créer une nouvelle candidature
         $application = candidaturePers::create([
@@ -64,6 +76,7 @@ class PersonnelControlleur extends Controller
             'lettre' => $lettrePath,
             'datenaissance' => $request->input('datenaissance'),
             'these' => $thesePath,
+            'email' =>  $userEmail,
         ]);
 
         // // Enregistrer les diplômes

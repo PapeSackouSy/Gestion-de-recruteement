@@ -34,6 +34,16 @@
             <a href="./index.html" class="text-nowrap logo-img text-center d-block py-3 w-100">
                 <img src="{{asset('Auth/assets/img/logo uabd.jpg')}}" width="180"  alt="">
               </a>
+              @if(session('error'))
+              <div class="alert alert-danger">
+                  {{session('error')}}
+              </div>
+              @endif
+              @if(session('success'))
+              <div class="alert alert-success">
+                  {{session('success')}}
+              </div>
+              @endif
             <form action="{{route('postulerPersA',$candidaturePers->id)}}" method="POST" enctype="multipart/form-data">
                 @method('post')
                 @csrf

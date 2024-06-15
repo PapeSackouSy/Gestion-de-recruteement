@@ -13,6 +13,7 @@ class CandidaturePers extends Model
         'lettre',
         'datenaissance',
         'these',
+        'email'
     ];
 
     public function diplomes()

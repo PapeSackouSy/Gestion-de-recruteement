@@ -11,7 +11,7 @@ class DossierDeCandaturePers extends Model
     protected $fillable = [ 'candidatures_id','offre_id', 'datedecreation'];
     public function candidat()
     {
-        return $this->belongsTo(candidaturePers::class);
+        return $this->belongsTo(CandidaturePers::class);
     }
 
     public function offre()
