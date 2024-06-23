@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthenficationControlleur;
 use App\Http\Controllers\ProjetConntrolleur;
@@ -11,6 +10,8 @@ use App\Http\Controllers\CandidatureControlleur;
 use App\Http\Controllers\OffrePersControlleur;
 use App\Http\Controllers\AvisControlleur;
 use App\Http\Controllers\PersonnelControlleur;
+use App\Http\Controllers\CommissionControlleur;
+use App\Http\Controllers\MembreControlleur;
 Route::get('/', function () {
     return view('layout');
 })->name('layout');
@@ -65,7 +66,7 @@ Route::prefix('offre')->group(function () {
     Route::get('{id}/postuler',[CandidatureControlleur::class,'index'])->name('Postuler');
     Route::post('{id}/postuler',[CandidatureControlleur::class,'store'])->name('AjouterPostuler');
 });
-    Route::prefix('OffresPers')->group(function(){
+Route::prefix('OffresPers')->group(function(){
       Route::get('/Affiche',[OffrePersControlleur::class,'index'])->name('indexPers');
       Route::post('/Ajouter',[OffrePersControlleur::class,'store'])->name('storePergs');
       Route::get('/AfficherOffre',[OffrePersControlleur::class,'show'])->name('listeOffresPers');
@@ -86,8 +87,22 @@ Route::prefix('offre')->group(function () {
       Route::put('/{id}/update',[AvisControlleur::class,'update'])->name('updateAvis');
       Route::get('/{id}/delete',[AvisControlleur::class,'destroy'])->name('deleterAvis');
     });
-    Route::prefix('Personnel')->group(function(){
+      Route::prefix('Personnel')->group(function(){
         Route::get('/{id}/postuler',[PersonnelControlleur::class,'Afficher'])->name('postulerPers');
         Route::post('/{id}/ajouter',[PersonnelControlleur::class,'store'])->name('postulerPersA');
       });
+      Route::prefix('commission')->group(function(){
+        Route::get('/Afficher',[CommissionControlleur::class,'index'])->name('afficherCommission');
+        Route::post('/Create',[CommissionControlleur::class,'create'])->name('createCommission');
+        Route::get('/lister',[CommissionControlleur::class,'show'])->name('showCommission');
+        Route::get('/{id}/editer',[CommissionControlleur::class,'edit'])->name('editCommission');
+        Route::put('/{id}/update',[CommissionControlleur::class,'update'])->name('updateCommissiom');
+        Route::get('/{id}/delete',[CommissionControlleur::class,'destroy'])->name('destroyCommissiom');
+
+      });
+    Route::prefix('membre')->group(function(){
+        Route::get('/afficher',[MembreControlleur::class,'index'])->name('affichermembre');
+        Route::post('/create',[MembreControlleur::class,'create'])->name('createmembre');
+        Route::get('/lister',[MembreControlleur::class,'show'])->name('showmembre');
+    });
 });

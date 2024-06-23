@@ -65,14 +65,21 @@
         <li class="iq-menu-title"><i class="ri-subtract-line"></i><span>Apps</span></li>
 
         <li><a href="todo.html" class="iq-waves-effect" aria-expanded="false"><i class="ri-chat-check-line"></i><span>Todo</span></a></li>
+       <li><a href="#extra-pages"  data-toggle="collapse" aria-expanded="false"><i  class="ri-file-list-line"></i><span>Commission</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a></li>
+         <ul id="extra-pages" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
         <li>
-           <a href="#userinfo" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i class="ri-user-line"></i><span></span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-           <ul id="userinfo" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-              <li><a href="#"><i class="ri-file-list-line"></i></a></li>
-           </ul>
+            <a href="{{route('afficherCommission')}}" class="iq-waves-effect"><i class="ri-file-list-line"></i><span>Cree une Commission</span></a>
+            <a href="{{route('showCommission')}}" class="iq-waves-effect"><i class="ri-file-list-line"></i><span>Liste des Commission</span></a>
         </li>
-        <li><a href="calendar.html" class="iq-waves-effect"><i class="ri-calendar-2-line"></i><span>Calendar</span></a></li>
-        <li><a href="chat.html" class="iq-waves-effect"><i class="ri-message-line"></i><span>Chat</span></a></li>
+        </ul>
+
+        <li><a href="#extra-pages"  data-toggle="collapse" aria-expanded="false"><i  class="ri-file-list-line"></i><span>Membre</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a></li>
+         <ul id="extra-pages" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+        <li>
+            <a href="{{route('affichermembre')}}" class="iq-waves-effect"><i class="ri-file-list-line"></i><span>Ajouter  Membre</span></a>
+            <a href="{{route('showmembre')}}" class="iq-waves-effect"><i class="ri-file-list-line"></i><span>Liste des Membres</span></a>
+        </li>
+        </ul>
       </nav>
         @include('Template2.NavbarAdmin')
     @endif

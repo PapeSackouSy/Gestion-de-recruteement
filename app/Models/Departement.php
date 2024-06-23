@@ -21,4 +21,8 @@ class Departement extends Model
     {
         return $this->hasMany(OffresPers::class);
     }
+    public function Commmission()
+    {
+        return $this->hasMany(Commission::class);
+    }
 }
