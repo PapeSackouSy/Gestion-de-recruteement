@@ -29,18 +29,9 @@
       <li>
         <a href="#drhaffiche" c class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i  class="ri-user-line"></i><span>Vice-Recteur</span></a>
         <ul id="drhaffiche" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-            <li><a href="{{route('Viceafficher')}}"><i class="ri-file-list-line"></i>Ajouter DRH</a></li>
+            <li><a href="{{route('Viceafficher')}}"><i class="ri-file-list-line"></i>Ajouter Vice-Recteur</a></li>
          </ul>
       </li>
-      <li>
-        <a href="#extra-pages" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i class="ri-pantone-line"></i><span>Offre</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-        <ul id="extra-pages" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-           <li>
-            <li><a href="{{route('listeOffre')}}"><i class="ri-file-list-line"></i>Lister Offres</a></li>
-            <li><a href="{{route('AfficherOffres')}}" class="iq-waves-effect" aria-expanded="false"><i class="ri-chat-check-line"></i> <span>Definir Offres</span></a></li>
-          </li>
-        </ul>
-     </li>
        <li>
           <a href="#map-page" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i class="ri-map-pin-user-line"></i><span>Maps</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
           <ul id="map-page" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">

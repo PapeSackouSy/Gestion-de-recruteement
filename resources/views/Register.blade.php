@@ -1,12 +1,18 @@
 @extends('Template.Temp1')
 @section('name-containt')
+<body>
+    <style>
+        body{
+            background-image: url("Auth/assets/img/login3-bg.jpg")
+        }
+    </style>
   <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
     data-sidebar-position="fixed" data-header-position="fixed">
     <div
       class="position-relative overflow-hidden radial-gradient min-vh-100 d-flex align-items-center justify-content-center">
       <div class="d-flex align-items-center justify-content-center w-100">
         <div class="row justify-content-center w-100">
-          <div class="col-md-4 col-lg-3 col-xxl-3">
+          <div class="col-md-3 col-lg-3 col-xxl-3">
             <div class="card mb-0">
               <div class="card-body">
                 <a href="{{route('layout')}}" class="text-nowrap logo-img text-center d-block py-3 w-100">
@@ -74,4 +80,5 @@
     </div>
 
   </div>
+</body>
   @endsection

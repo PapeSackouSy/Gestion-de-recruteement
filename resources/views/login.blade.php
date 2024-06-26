@@ -1,5 +1,18 @@
 @extends('Template.Temp1')
 @section('name-containt')
+<style>
+    body{
+        background-image: url("Auth/assets/img/login3-bg.jpg")
+    }
+    h1{
+        text-align: center;
+        font-size: 2em;
+        margin: 0;
+        padding: 20px;
+        background-color: rgb(0, 123, 255);
+    }
+</style>
+<body>
   <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
     data-sidebar-position="fixed" data-header-position="fixed">
     <div
@@ -10,8 +23,10 @@
             <div class="card mb-0">
               <div class="card-body">
                 <a href="{{route('layout')}}" class="text-nowrap logo-img text-center d-block py-3 w-100">
+                    <h1 class="titre">ESPACE USER</h1>
                     <img src="{{asset('Auth/assets/img/logo uabd.jpg')}}" width="180"  alt="">
                 </a>
+                <p>connectez-vous pour acceder a l'application !</p>
                 @if(session('success'))
                 <div class="alert alert-success">
                     {{session('success')}}
@@ -56,5 +71,5 @@
       </div>
     </div>
   </div>
-
+</body>
 @endsection

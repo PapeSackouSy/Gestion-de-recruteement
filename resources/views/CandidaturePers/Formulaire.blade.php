@@ -87,7 +87,9 @@
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Postuler</button>
                 </div>
-
+                <div class="form-group">
+                    <a type="submit" href="{{route('layout')}}" class="btn btn-success ">Retourner</a>
+                </div>
             </form>
         </div>
     </div>

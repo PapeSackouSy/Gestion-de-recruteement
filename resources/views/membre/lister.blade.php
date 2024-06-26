@@ -38,12 +38,8 @@ data-sidebar-position="fixed" data-header-position="fixed">
                     <td>{{ $membre->telephone }}</td>
                     <td>
                         <!-- Actions pour éditer ou supprimer le membre -->
-                        <a href="#" class="btn btn-warning btn-sm">Éditer</a>
-                        <form action="#" method="POST" style="display:inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce membre ?')">Supprimer</button>
-                        </form>
+                        <a href="{{route('editmembre', $membre->id)}}" class="btn btn-warning btn-sm">Éditer</a>
+                        <a href="{{route('deletemembre', $membre->id)}}" style="display:inline;" class="btn btn-danger btn-sm" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce membre ?')">Supprimer</a>
                     </td>
                 </tr>
             @endforeach

@@ -62,7 +62,7 @@ Route::prefix('offre')->group(function () {
     Route::get('/{id}/Editer',[OffreControlleur::class,'EditerOffre'])->name('EditerOffre');
     Route::post('/{id}/Update',[OffreControlleur::class,'update'])->name('UpdateOffre');
     Route::get('/{id}/Supprimer',[OffreControlleur::class,'destroy'])->name('deleteOffre');
-    Route::get('/Afficher',[OffreControlleur::class,'AfficherCandidature'])->name('candidature');
+    Route::get('/Afficher',[OffreControlleur::class,'AfficherCandidature'])->name('candidature')->withoutMiddleware('auth');
     Route::get('{id}/postuler',[CandidatureControlleur::class,'index'])->name('Postuler');
     Route::post('{id}/postuler',[CandidatureControlleur::class,'store'])->name('AjouterPostuler');
 });
@@ -104,5 +104,8 @@ Route::prefix('OffresPers')->group(function(){
         Route::get('/afficher',[MembreControlleur::class,'index'])->name('affichermembre');
         Route::post('/create',[MembreControlleur::class,'create'])->name('createmembre');
         Route::get('/lister',[MembreControlleur::class,'show'])->name('showmembre');
+        Route::get('/{id}/edit',[MembreControlleur::class,'edit'])->name('editmembre');
+        Route::put('/{id}/update',[MembreControlleur::class,'update'])->name('updatemembre');
+        Route::get('/{id}/delete',[MembreControlleur::class,'destroy'])->name('deletemembre');
     });
 });
