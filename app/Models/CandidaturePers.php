@@ -15,7 +15,10 @@ class CandidaturePers extends Model
         'these',
         'email'
     ];
-
+    public function dossier()
+    {
+        return $this->hasOne(DossierDeCandaturePers::class, 'candidatures_id');
+    }
     public function diplomes()
     {
         return $this->hasMany(Diplome::class);

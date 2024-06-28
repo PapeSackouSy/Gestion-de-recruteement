@@ -103,6 +103,14 @@
                                                 </ul>
                                             </li>
                                             <li>
+                                                <a href="#extra-pages" class="iq-waves-effect collapsed" data-toggle="collapse"  aria-expanded="false"><i class="ri-pantone-line"></i><span>Candidature</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                                                <ul id="extra-pages" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                                                    <li>
+                                                        <li><a href="{{route('AfficherCandidat')}}"><i class="ri-file-list-line"></i>Lister Offres</a></li>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
                                                 <a href="#extra-pages" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i class="ri-pantone-line"></i><span>Avis de recrutement</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                                                 <ul id="extra-pages" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
                                                 <li>

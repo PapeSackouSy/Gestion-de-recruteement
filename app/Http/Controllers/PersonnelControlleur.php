@@ -10,6 +10,7 @@ use App\Models\Experience;
 use App\Models\candidaturePers;
 use App\Models\DossierDeCandaturePers;
 use App\Models\OffresPers;
+use App\Models\DRH;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use Illuminate\Support\facades\Auth;
@@ -21,7 +22,11 @@ class PersonnelControlleur extends Controller
         return view('CandidaturePers.Formulaire',compact('candidaturePers'));
     }
 
-
+    // public function AfficherCandidat(){
+    //     $candidaturePers = candidaturePers::all();
+    //     $usecaseDRH=DRH::all();
+    //     return view('CandidaturePers.afficherCand',compact('candidaturePers','usecaseDRH'));
+    // }
     public function store(Request $request,OffresPers $offre)
     {
 
@@ -118,5 +123,17 @@ class PersonnelControlleur extends Controller
         ]);
         return redirect()->back()->with('success', 'Votre candidature a été soumise avec succès.');
     }
+       public function getAllCandidaturesWithOffres()
+        {
+            $candidatures = CandidaturePers::with('dossier.offre')->get();
+            $usecaseDRH=DRH::all();
+            $userInfo  = DB::table('users')
+            ->whereIn('email', function ($query) {
+                $query->select('email')->from('candidature_pers');
+            })->get();
+
+            return view('CandidaturePers.afficherCand', compact('candidatures','usecaseDRH','userInfo'));
+        }
+
 }
 

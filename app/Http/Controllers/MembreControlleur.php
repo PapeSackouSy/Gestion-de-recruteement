@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Commission;
 use App\Models\Ufr;
 use App\Models\Membre;
+use Illuminate\Support\Facades\DB;
 class MembreControlleur extends Controller
 {
     /**
@@ -24,7 +25,22 @@ class MembreControlleur extends Controller
         $validatedData = $request->validate([
             'nom' => 'required|string|max:255',
             'prenom' => 'required|string|max:255',
-            'role' => 'required|in:President,Raporteur,membre',
+            'role' => [
+              'required',
+              'in:President,Raporteur,membre',
+            function ($attribute, $value, $fail) use ($request) {
+             if (in_array($value, ['President', 'Raporteur'])) {
+                $exists = DB::table('membres')
+                    ->where('commission_id', $request->commission_id)
+                    ->where('role', $value)
+                    ->exists();
+
+                if ($exists) {
+                    $fail('Le rôle de ' . $value . ' est déjà attribué pour cette commission.');
+                }
+            }
+        },
+    ],
             'commission_id' => 'required|exists:commissions,id',
             'email' => 'required|email|unique:membres,email',
             'telephone' => 'required|string|max:15',

@@ -12,6 +12,9 @@ use App\Http\Controllers\AvisControlleur;
 use App\Http\Controllers\PersonnelControlleur;
 use App\Http\Controllers\CommissionControlleur;
 use App\Http\Controllers\MembreControlleur;
+use App\Exports\CandidaturesExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 Route::get('/', function () {
     return view('layout');
 })->name('layout');
@@ -90,6 +93,7 @@ Route::prefix('OffresPers')->group(function(){
       Route::prefix('Personnel')->group(function(){
         Route::get('/{id}/postuler',[PersonnelControlleur::class,'Afficher'])->name('postulerPers');
         Route::post('/{id}/ajouter',[PersonnelControlleur::class,'store'])->name('postulerPersA');
+        Route::get('/Afficher',[PersonnelControlleur::class,'getAllCandidaturesWithOffres'])->name('AfficherCandidat');
       });
       Route::prefix('commission')->group(function(){
         Route::get('/Afficher',[CommissionControlleur::class,'index'])->name('afficherCommission');
@@ -107,5 +111,8 @@ Route::prefix('OffresPers')->group(function(){
         Route::get('/{id}/edit',[MembreControlleur::class,'edit'])->name('editmembre');
         Route::put('/{id}/update',[MembreControlleur::class,'update'])->name('updatemembre');
         Route::get('/{id}/delete',[MembreControlleur::class,'destroy'])->name('deletemembre');
+    });
+    Route::get('/export-candidatures', function () {
+        return Excel::download(new CandidaturesExport, 'candidatures.xlsx');
     });
 });

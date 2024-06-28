@@ -24,7 +24,6 @@
         <div class="d-flex justify-content-center mb-4">
             <button id="offres-per-button" class="btn btn-primary me-1">Offre de recrutement des Personnels Administratives (Pats) </button>
             <button id="offres-path-button" class="btn btn-secondary  me-1">Offre  de recrutement des Personnels Enseignants (Pers)</button>
-            <a href="{{route('logout')}}" class="btn btn-primary fw-bold ms-2">Retourner</a>
         </div>
         <div id="offres-per" class="content-section">
             <h2 class="text-center mb-4">Offre des Personnels Administratives (Pats)</h2>
@@ -34,7 +33,7 @@
                         <div class="col-md-6 mb-4">
                             <div class="card h-100">
                                 @if($offre->photos)
-                                    <img src="{{ asset('storage/photos/'.$offre->photos) }}" alt="Offre photo" class="card-img-top">
+                                    <img src="{{asset('storage/photos/'.$offre->photos) }}" alt="Offre photo" class="card-img-top">
                                 @else
                                     <img src="https://via.placeholder.com/445x300" alt="Image par défaut" class="card-img-top">
                                 @endif
