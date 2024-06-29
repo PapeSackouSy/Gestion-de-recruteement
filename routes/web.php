@@ -106,6 +106,10 @@ Route::prefix('OffresPers')->group(function(){
         Route::get('/{id}/delete',[CommissionControlleur::class,'destroy'])->name('destroyCommissiom');
 
       });
+      Route::group(['middleware' => ['auth', 'commission.access']], function () {
+        Route::get('/departement/{departement_id}/espace', [DepartementController::class, 'showEspace'])->name('departement.espace');
+    });
+
     Route::prefix('membre')->group(function(){
         Route::get('/afficher',[MembreControlleur::class,'index'])->name('affichermembre');
         Route::post('/create',[MembreControlleur::class,'create'])->name('createmembre');

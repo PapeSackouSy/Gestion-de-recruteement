@@ -20,6 +20,10 @@ class User extends Authenticatable
         'password',
         'role'
     ];
+    public function membres()
+    {
+        return $this->hasMany(Membre::class, 'email', 'email');
+    }
     public function ufrResponsable()
      {
          return $this->hasOne(Ufr::class, 'responsable_ufr_id');

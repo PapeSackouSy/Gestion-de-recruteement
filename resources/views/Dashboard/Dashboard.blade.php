@@ -152,7 +152,37 @@
                                 </ul>
                             </li>
                         </nav>
-            @endif
+
+               @elseif (Auth::user()->role == "Autre")
+               <!-- Menu pour les membres de la commission -->
+                    @php
+                        $hasAccess = false;
+                    @endphp
+                    @foreach ($usecaseDep as $departement)
+                        @if (app('App\Http\Controllers\DashboardController')->checkAccess($departement->id))
+                            @php
+                                $hasAccess = true;
+                            @endphp
+                           <a href="index.html" class="iq-waves-effect"><i class="ri-home-4-line"></i><span>Dashboard</i> </a>
+                               </li>
+                                     <li>
+                                         <a href="#extra-pages" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i class="ri-pantone-line"></i><span>Offre</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                                         <ul id="extra-pages" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                                         <li>
+                                             <li><a href="{{route('AfficherCandidat')}}"><i class="ri-file-list-line"></i>Voire Offres</a></li>
+                                         </li>
+                                         </ul>
+                                     </li>
+                                 </nav>
+                            @include('Template2.NavbarAdmin')
+                            @break
+                        @endif
+                    @endforeach
+                    @if (!$hasAccess)
+                        <!-- Message ou redirection si l'utilisateur n'a pas accès -->
+                        <p>Vous n'avez pas accès à cette section.</p>
+                    @endif
+           @endif
         @endauth
     </div>
 </div>

@@ -14,6 +14,7 @@ class CommissionControlleur extends Controller
     public function index()
     {
         $departements=Departement::all();
+        $offres=Commission::all();
         $usecase=Ufr::all();
         return view('Commission.afficher',compact('departements','usecase'));
     }
