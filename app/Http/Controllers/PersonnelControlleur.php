@@ -11,6 +11,7 @@ use App\Models\candidaturePers;
 use App\Models\DossierDeCandaturePers;
 use App\Models\OffresPers;
 use App\Models\DRH;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use Illuminate\Support\facades\Auth;
@@ -123,17 +124,23 @@ class PersonnelControlleur extends Controller
         ]);
         return redirect()->back()->with('success', 'Votre candidature a été soumise avec succès.');
     }
-       public function getAllCandidaturesWithOffres()
+       public function getAllCandidaturesWithOffres($id)
         {
-            $candidatures = CandidaturePers::with('dossier.offre')->get();
-            $usecaseDRH=DRH::all();
-            $userInfo  = DB::table('users')
-            ->whereIn('email', function ($query) {
-                $query->select('email')->from('candidature_pers');
-            })->get();
-
-            return view('CandidaturePers.afficherCand', compact('candidatures','usecaseDRH','userInfo'));
+             $offre=OffresPers::find($id);
+             $candidats = DossierDeCandaturePers::where('offre_id', $id)
+             ->whereNotNull('offre_id')
+             ->with(['candidat.diplomes', 'candidat.publications', 'candidat.experiences'])
+             ->paginate(10);
+             $emails = $candidats->pluck('candidat.email')->toArray();
+             $users = User::whereIn('email', $emails)->get();
+             $usecaseDRH=DRH::all();
+            return view('CandidaturePers.AfficherlisteCandidature', compact('candidats','usecaseDRH','offre','users'));
         }
-
+        public function AfficheroffresGR()
+        {
+             $offres = OffresPers::all();
+             $usecaseDRH=DRH::all();
+             return view('CandidaturePers.afficherCand',compact('offres','usecaseDRH'));
+        }
 }
 

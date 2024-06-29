@@ -61,7 +61,7 @@
                                 <img src="https://via.placeholder.com/445x300" alt="Image par défaut" class="card-img-top">
                             @endif
                             <div class="card-body">
-                                <h5 class="card-title">{{ $offre->Titre }}</h5>
+                                <h5 class="card-title">{{ $offre->Profil }}</h5>
                                 <p class="card-text">{{ Str::limit($offre->Description, 100, '...') }}</p>
                                 <a href="{{route('AvisPers', $offre->id)}}" class="btn btn-primary">Avis de Recrutement</a>
                                 <a href="{{route('postulerPers', $offre->id)}}" class="btn btn-success">Postuler</a>

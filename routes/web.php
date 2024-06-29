@@ -14,7 +14,8 @@ use App\Http\Controllers\CommissionControlleur;
 use App\Http\Controllers\MembreControlleur;
 use App\Exports\CandidaturesExport;
 use Maatwebsite\Excel\Facades\Excel;
-
+use Illuminate\Support\Facades\Storage;
+use App\Models\candidaturePers;
 Route::get('/', function () {
     return view('layout');
 })->name('layout');
@@ -61,7 +62,7 @@ Route::prefix('offre')->group(function () {
     Route::get('/Afficherformulaire', [OffreControlleur::class,'index'])->name('AfficherOffres');
     Route::post('/Ajouter',[OffreControlleur::class,'store'])->name('AjouterOffre');
     Route::get('/listeOffre',[OffreControlleur::class,'show'])->name('listeOffre');
-    Route::get('/{id}/AvisdeRecrutement',[PDFController::class,'modifyPDF'])->name('Avis');
+    Route::get('/{id}/AvisdeRecrutement',[PDFController::class,'modifyPDF'])->name('Avis')->withoutMiddleware('auth');
     Route::get('/{id}/Editer',[OffreControlleur::class,'EditerOffre'])->name('EditerOffre');
     Route::post('/{id}/Update',[OffreControlleur::class,'update'])->name('UpdateOffre');
     Route::get('/{id}/Supprimer',[OffreControlleur::class,'destroy'])->name('deleteOffre');
@@ -79,7 +80,7 @@ Route::prefix('OffresPers')->group(function(){
       Route::get('/{id}/editerPers',[OffrePersControlleur::class,'showEditer'])->name('showEditer');
       Route::put('/{id}/update',[OffrePersControlleur::class,'updateOffrePers'])->name('voirupdate');
       Route::get('/{id}/delete',[OffrePersControlleur::class,'destroy'])->name('deleterOffrepers');
-      Route::get('/{id}/Avis',[PDFController::class,'GeneAvis'])->name('AvisPers');
+      Route::get('/{id}/Avis',[PDFController::class,'GeneAvis'])->name('AvisPers')->withoutMiddleware('auth');
     });
     Route::get('/publier/Afficher',[OffrePersControlleur::class,'indexp'])->name('affichieroffrepub');
     Route::prefix('Avis')->group(function(){
@@ -93,7 +94,8 @@ Route::prefix('OffresPers')->group(function(){
       Route::prefix('Personnel')->group(function(){
         Route::get('/{id}/postuler',[PersonnelControlleur::class,'Afficher'])->name('postulerPers');
         Route::post('/{id}/ajouter',[PersonnelControlleur::class,'store'])->name('postulerPersA');
-        Route::get('/Afficher',[PersonnelControlleur::class,'getAllCandidaturesWithOffres'])->name('AfficherCandidat');
+        Route::get('/Afficher',[PersonnelControlleur::class,'AfficheroffresGR'])->name('AfficherCandidat');
+        Route::get('/{id}/AfficherListeCandidature',[PersonnelControlleur::class,'getAllCandidaturesWithOffres'])->name('AfficherListCandidat');
       });
       Route::prefix('commission')->group(function(){
         Route::get('/Afficher',[CommissionControlleur::class,'index'])->name('afficherCommission');
@@ -115,4 +117,25 @@ Route::prefix('OffresPers')->group(function(){
     Route::get('/export-candidatures', function () {
         return Excel::download(new CandidaturesExport, 'candidatures.xlsx');
     });
+    Route::get('/download/cv/{id}', function ($id) {
+        $candidat = candidaturePers::find($id);
+        if ($candidat && Storage::exists($candidat->cv)) {
+            return Storage::download($candidat->cv);
+        }
+        return redirect()->back()->with('error', 'CV non disponible.');
+    })->name('download.cv');
+    Route::get('/download/lettre/{id}', function ($id) {
+        $candidat = candidaturePers::find($id);
+        if ($candidat && Storage::exists($candidat->lettre)) {
+            return Storage::download($candidat->lettre);
+        }
+        return redirect()->back()->with('error', 'Lettre de motivation non disponible.');
+    })->name('download.lettre');
+    Route::get('/download/these/{id}', function ($id) {
+        $candidat = candidaturePers::find($id);
+        if ($candidat && Storage::exists($candidat->these)) {
+            return Storage::download($candidat->these);
+        }
+        return redirect()->back()->with('error', 'Thèse non disponible.');
+    })->name('download.these');
 });

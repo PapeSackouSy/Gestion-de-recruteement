@@ -12,39 +12,25 @@ data-sidebar-position="fixed" data-header-position="fixed">
                                 {{session('success')}}
                             </div>
                             @endif
-                            <h1>Liste des Candidatures avec leurs Offres</h1>
-                            <a href="{{ url('/export-candidatures') }}" class="btn btn-success mb-3">Télécharger le Bordereau</a>
+                            <h1>Liste des Offres </h1>
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Nom</th>
-                                        <th>Prenom</th>
-                                        <th>Email</th>
-                                        <th>Date de naissance</th>
-                                        <th>Offres</th>
-                                        <th>Autres Information</th>
+                                        <th>Titre</th>
+                                         <th>Listes Des Candidatures</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @for ($i = 0; $i < max($candidatures->count(), $userInfo->count()); $i++)
-                                    <tr>
-                                        <td>{{ $candidatures[$i]->id }}</td>
-                                        <td>{{ $userInfo[$i]->nom }}</td>
-                                        <td>{{ $userInfo[$i]->prenom }}</td>
-                                        <td>{{ $candidatures[$i]->email }}</td>
-                                        <td>{{ $candidatures[$i]->datenaissance ?? 'Non disponible' }}</td>
-                                        <td>{{ $candidatures[$i]->dossier->offre->Titre ?? 'Non disponible' }}</td>
-                                        <td>
-                                            <strong>Adresse:</strong> {{ $userInfo[$i]->adresse }} <br>
-                                            <strong>Téléphone:</strong> {{ $userInfo[$i]->telephone }} <br>
-                                            <strong>Date de Creation du Dossier:</strong> {{ $candidatures[$i]->dossier->datedecreation }} <br>
-                                            <strong>CV :</strong> <a href="{{ asset('storage/' . $candidatures[$i]->cv) }}">Télécharger CV</a><br>
-                                            <strong>Lettre de Motivation :</strong> <a href="{{ asset('storage/' . $candidatures[$i]->lettre) }}">Télécharger Lettre</a><br>
-                                            <strong>These :</strong> <a href="{{ asset('storage/' . $candidatures[$i]->These) }}">Télécharger These</a>
-                                        </td>
-                                    </tr>
-                                    @endfor
+                                    @foreach ($offres as $offre)
+                                        <tr>
+                                          <td>{{$offre->id}}</td>
+                                          <td>{{$offre->Profil}}</td>
+                                          <td><a href="{{route('AfficherListCandidat',$offre->id)}}" class="btn btn-success ">Voire Candidature</a></td>
+                                        </tr>
+                                    @endforeach
+
+
                                 </tbody>
                             </table>
                         </div>

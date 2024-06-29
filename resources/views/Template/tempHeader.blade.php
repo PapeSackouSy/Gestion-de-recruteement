@@ -47,10 +47,7 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto " href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          <li class="nav-item"><a class="nav-link btn btn-primary" href="{{route('candidature')}}">Offres</a></li>
+          <li class="nav-item"><a class="nav-link btn btn-primary" href="{{route('candidature')}}">Voire Offres</a></li>
           <li class="nav-item"><a class="nav-link btn btn-primary" href="{{route('login')}}">Login</a></li>
           <li class="nav-item"><a class="nav-link btn btn-primary" href="{{route('register')}}">Register</a></li>
         </ul>
