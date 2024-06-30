@@ -96,7 +96,8 @@ Route::prefix('OffresPers')->group(function(){
         Route::post('/{id}/ajouter',[PersonnelControlleur::class,'store'])->name('postulerPersA');
         Route::get('/Afficher',[PersonnelControlleur::class,'AfficheroffresGR'])->name('AfficherCandidat');
         Route::get('/{id}/AfficherListeCandidature',[PersonnelControlleur::class,'getAllCandidaturesWithOffres'])->name('AfficherListCandidat');
-      });
+        Route::get('/AfficherEv',[PersonnelControlleur::class,'AfficheroffresEva'])->name('AfficherEva');
+    });
       Route::prefix('commission')->group(function(){
         Route::get('/Afficher',[CommissionControlleur::class,'index'])->name('afficherCommission');
         Route::post('/Create',[CommissionControlleur::class,'create'])->name('createCommission');

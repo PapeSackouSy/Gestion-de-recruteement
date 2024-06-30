@@ -11,6 +11,7 @@ use App\Models\candidaturePers;
 use App\Models\DossierDeCandaturePers;
 use App\Models\OffresPers;
 use App\Models\DRH;
+use App\Models\Departement;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
@@ -141,6 +142,12 @@ class PersonnelControlleur extends Controller
              $offres = OffresPers::all();
              $usecaseDRH=DRH::all();
              return view('CandidaturePers.afficherCand',compact('offres','usecaseDRH'));
+        }
+        public function AfficheroffresEva()
+        {
+            $offres = OffresPers::with('responsable.commission')->get();
+            $usecaseDep=Departement::all();
+            return view('CandidaturePers.AfficheEvalu',compact('offres','usecaseDep'));
         }
 }
 

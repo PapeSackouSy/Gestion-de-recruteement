@@ -21,8 +21,8 @@ class Departement extends Model
     {
         return $this->hasMany(OffresPers::class);
     }
-    public function Commmission()
+    public function commission()
     {
-        return $this->hasMany(Commission::class);
+        return $this->hasOne(Commission::class, 'id_departement');
     }
 }

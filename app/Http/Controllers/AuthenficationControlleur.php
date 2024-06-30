@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Ufr;
 use App\Models\Departement;
 use App\Models\DRH;
+use App\Models\OffresPers;
 use App\Models\ViceRecteur;
 use App\Models\User;
 class AuthenficationControlleur extends Controller
@@ -25,8 +26,8 @@ class AuthenficationControlleur extends Controller
         $usecaseDep=Departement::all();
         $usecaseDRH=DRH::all();
         $usecaseVice=ViceRecteur::all();
-
-        return view('Dashboard.Dashboard',compact('usecase','usecaseDep','usecaseDRH','usecaseVice'));
+        $offres = OffresPers::with('responsable.commission')->get();
+        return view('Dashboard.Dashboard',compact('usecase','offres','usecaseDep','usecaseDRH','usecaseVice'));
     }
     public function VueUFR()
     {
