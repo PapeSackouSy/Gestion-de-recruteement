@@ -8,6 +8,7 @@ use App\Http\Controllers\ProjetControlleurDRH;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\CandidatureControlleur;
 use App\Http\Controllers\OffrePersControlleur;
+use App\Http\Controllers\EvaluationControlleur;
 use App\Http\Controllers\AvisControlleur;
 use App\Http\Controllers\PersonnelControlleur;
 use App\Http\Controllers\CommissionControlleur;
@@ -99,6 +100,7 @@ Route::prefix('OffresPers')->group(function(){
         Route::get('/AfficherEv',[PersonnelControlleur::class,'AfficheroffresEva'])->name('AfficherEva');
         Route::get('/{id}/AfficherListeCandidatureEva',[PersonnelControlleur::class,'getAllCandidaturesOffres'])->name('AfficherListeCandidatureEva');
     });
+
       Route::prefix('commission')->group(function(){
         Route::get('/Afficher',[CommissionControlleur::class,'index'])->name('afficherCommission');
         Route::post('/Create',[CommissionControlleur::class,'create'])->name('createCommission');
@@ -144,4 +146,8 @@ Route::prefix('OffresPers')->group(function(){
         }
         return redirect()->back()->with('error', 'Thèse non disponible.');
     })->name('download.these');
+    Route::prefix('Evaluation')->group(function(){
+        Route::get('/{id}/Afficher',[EvaluationControlleur::class,'index'])->name('indexEva');
+        Route::post('/{id}/Ajouter',[EvaluationControlleur::class,'store'])->name('AjouterEvaluation');
+    });
 });

@@ -18,7 +18,7 @@
                                 </div>
                             @endif
                             <h1>Liste des Candidatures avec leurs Offres</h1>
-
+                            <td><a href="#" class="btn btn-success mb-4">Resultats</a></td>
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -33,6 +33,7 @@
 
                                         <th>Autres Informations</th>
                                         <th>Action</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -88,7 +89,8 @@
                                                         <strong>Thèse :</strong> Non disponible<br>
                                                     @endif
                                                 </td>
-                                                <td><a href="#" class="btn btn-danger">Evaluation</a></td>
+                                                <td><a href="{{route('indexEva',$user->id)}}" class="btn btn-danger">Evaluation</a></td>
+
                                             </tr>
                                         @endif
                                     @endforeach
