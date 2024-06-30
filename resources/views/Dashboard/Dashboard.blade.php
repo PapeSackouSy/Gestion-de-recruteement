@@ -166,8 +166,8 @@
                             @endphp
                            <a href="index.html" class="iq-waves-effect"><i class="ri-home-4-line"></i><span>Dashboard</i> </a>
                                </li>
-                               @foreach ($offres as $offre)
-                               @if ( $offre->responsable->id ==$departement->id)
+
+
                                <li>
                                 <a href="#extra-pages" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i class="ri-pantone-line"></i><span>Offre</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                                 <ul id="extra-pages" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
@@ -176,9 +176,7 @@
                                 </li>
                                 </ul>
                              </li>
-                             @break
-                             @endif
-                            @endforeach
+
 
 
                                  </nav>

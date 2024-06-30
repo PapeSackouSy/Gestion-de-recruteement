@@ -32,7 +32,6 @@
                                         <th>Publications</th>
 
                                         <th>Autres Informations</th>
-                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -88,7 +87,7 @@
                                                         <strong>Thèse :</strong> Non disponible<br>
                                                     @endif
                                                 </td>
-                                                <td><a href="#" class="btn btn-danger">Evaluation</a></td>
+
                                             </tr>
                                         @endif
                                     @endforeach

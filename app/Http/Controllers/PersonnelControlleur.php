@@ -11,6 +11,8 @@ use App\Models\candidaturePers;
 use App\Models\DossierDeCandaturePers;
 use App\Models\OffresPers;
 use App\Models\DRH;
+use App\Models\Membre;
+use App\Models\Commission;
 use App\Models\Departement;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
@@ -145,9 +147,24 @@ class PersonnelControlleur extends Controller
         }
         public function AfficheroffresEva()
         {
-            $offres = OffresPers::with('responsable.commission')->get();
+            $userId = Auth::user()->email;
+            $commissionId = Membre::where('email', $userId)->value('commission_id');
+            $commission = Commission::with('offres')->find($commissionId);
+            $offres = $commission->offres;
             $usecaseDep=Departement::all();
             return view('CandidaturePers.AfficheEvalu',compact('offres','usecaseDep'));
+        }
+        public function getAllCandidaturesOffres($id)
+        {
+             $offre=OffresPers::find($id);
+             $candidats = DossierDeCandaturePers::where('offre_id', $id)
+             ->whereNotNull('offre_id')
+             ->with(['candidat.diplomes', 'candidat.publications', 'candidat.experiences'])
+             ->paginate(10);
+             $emails = $candidats->pluck('candidat.email')->toArray();
+             $users = User::whereIn('email', $emails)->get();
+             $usecaseDep=Departement::all();
+            return view('CandidaturePers.AfficherlisteCandidature', compact('candidats','usecaseDep','offre','users'));
         }
 }
 

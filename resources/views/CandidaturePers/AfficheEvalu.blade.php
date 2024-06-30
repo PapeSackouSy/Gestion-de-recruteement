@@ -26,7 +26,7 @@ data-sidebar-position="fixed" data-header-position="fixed">
                                         <tr>
                                           <td>{{$offre->id}}</td>
                                           <td>{{$offre->Profil}}</td>
-                                          <td><a href="#" class="btn btn-success ">Voire Candidature</a></td>
+                                          <td><a href="{{route('AfficherListeCandidatureEva',$offre->id)}}" class="btn btn-success ">Voire Candidature</a></td>
                                         </tr>
                                     @endforeach
 

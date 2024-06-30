@@ -26,8 +26,8 @@ class AuthenficationControlleur extends Controller
         $usecaseDep=Departement::all();
         $usecaseDRH=DRH::all();
         $usecaseVice=ViceRecteur::all();
-        $offres = OffresPers::with('responsable.commission')->get();
-        return view('Dashboard.Dashboard',compact('usecase','offres','usecaseDep','usecaseDRH','usecaseVice'));
+
+        return view('Dashboard.Dashboard',compact('usecase','usecaseDep','usecaseDRH','usecaseVice'));
     }
     public function VueUFR()
     {
