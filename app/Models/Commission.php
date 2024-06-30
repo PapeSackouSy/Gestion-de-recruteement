@@ -24,4 +24,8 @@ class Commission extends Model
     {
         return $this->hasMany(Membre::class);
     }
+    public function offres()
+    {
+        return $this->belongsToMany(OffresPers::class, 'commission_offres_pers');
+    }
 }

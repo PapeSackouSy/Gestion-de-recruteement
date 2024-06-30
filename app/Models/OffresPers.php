@@ -19,7 +19,7 @@ class OffresPers extends Model
         'Description',
         'departement_id'
     ];
-    public function responsable()
+    public function departement()
     {
         return $this->belongsTo(Departement::class, 'departement_id');
     }
@@ -30,5 +30,9 @@ class OffresPers extends Model
 public function dossiersDeCandidature()
 {
     return $this->hasMany(DossierDeCandaturePers::class);
+}
+public function commissions()
+{
+    return $this->belongsToMany(Commission::class, 'commission_offres_pers');
 }
 }

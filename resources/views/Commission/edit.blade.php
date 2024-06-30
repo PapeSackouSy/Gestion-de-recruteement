@@ -34,6 +34,17 @@ data-sidebar-position="fixed" data-header-position="fixed">
             </select>
         </div>
         <div class="form-group">
+            <label for="offres">Sélectionnez les Offres d'Emploi</label><br>
+            @foreach($offres as $offre)
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="offres[]" id="offre_{{ $offre->id }}" value="{{ $offre->id }}" {{ in_array($offre->id, old('offres', [])) ? 'checked' : '' }}>
+                    <label class="form-check-label" for="offre_{{ $offre->id }}">
+                        {{ $offre->Profil }}
+                    </label>
+                </div>
+            @endforeach
+        </div>
+        <div class="form-group">
             <label for="date_creation">Date de Création</label>
             <input type="date" name="date_creation" class="form-control" id="date_creation" value="{{ $commission->date_creation }}" required>
         </div>
